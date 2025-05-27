@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <nav class="flex items-center bg-white p-4 space-x-4">
+            <img class="h-10 w-20" src="./images/logo.png" alt="olx_logo">
+            <div class="flex items-center space-x-2">
+                <img class="h-6 w-6" src="./images/car-icon.png" alt="car_icon">
+                <span>Cars</span>
+            </div>
+            <div class="flex items-center space-x-2">
+                <img class="h-6 w-6" src="./images/property-icon.png" alt="property_icon">
+                <span>Property</span>
+            </div>
+        </nav>
+    </div>
+    <div>
+        <nav class="flex items-center bg-white p-4 space-x-4">
+            <img class="h-10 w-20" src="./images/scnd_nav_logo.png" alt="olx_logo">
+            <div class="flex items-center space-x-2">
+                <label for="sale-dropdown" class="sr-only">Sale</label>
+                <select id="sale-dropdown">
+                  </select>  <option value="house">Sale</option>
+                    <option value="apartment">Apartment</option>
+                    <option value="plot">Plot</option>
+                </select>
+            </div>
+            <div class="flex items-center space-x-2">
+                <label for="rent-dropdown" class="sr-only">Rent</label>
+                <select id="rent-dropdown">
+                    <option value="hou</select>se ">Rent</option>
+                    <option value="apartment">Apartment</option>
+                    <option value="room">Room</option>
+                </select>
+            </div>
+        </nav>
+    </div>
+</body>
+</html>

@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olx Clone</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+    <link rel="icon" href="./images/favicon1.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        html,
+
+        header {
+    position: fixed; /* Fixes the header to the top */
+    top: 0; /* Aligns it to the top of the viewport */
+    left: 0; /* Ensures it starts from the left edge */
+    width: 100%; /* Makes it span the full width */
+    background-color: #fff; /* Ensures the background is visible (white in this case) */
+    z-index: 1000; /* Ensures the header stays above other content */
+    border-bottom: 1px solid #ebeeef; /* Optional: Adds a bottom border for visual separation */
+}
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            overflow-x: hidden;
+            padding-top: 120px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .accordion-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .accordion-width {
+            flex: 1 1 100%;
+            max-width: 300px;
+        }
+
+        .accordion-button {
+            min-height: 20px;
+            padding: 5px;
+        }
+
+        .accordion-item {
+            overflow: hidden;
+        }
+
+        .accordion-body {
+            max-height: 120px;
+            overflow-y: auto;
+        }
+
+        .full-width-line {
+            width: 100%;
+            border-bottom: 1px solid #8f8c8c;
+            margin: 10px 0;
+        }
+
+        .search-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .search-bar {
+            flex: 1 1 100%;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none;
+        }
+
+        .suggestions div {
+            padding: 10px;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+        }
+
+        .suggestions div:last-child {
+            border-bottom: none;
+        }
+
+        .suggestions div:hover {
+            background-color: #f0f0f0;
+        }
+
+        .btn {
+            background-color: #2196F3;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            outline: none;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .btn:hover,
+        .dropdown:hover .btn {
+            background-color: #0b7dda;
+        }
+
+        .carousel-item img {
+            max-width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .category-card {
+            margin-top: 20px;
+            text-align: center;
+            flex: 1 1 calc(11.11% - 20px);
+            max-width: calc(11.11% - 20px);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .category-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .category-card img {
+            max-width: 100%;
+            height: 100px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .category-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .category-card p {
+            margin-top: 10px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .category-card a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .nav-items ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .accordion-width {
+                max-width: 100%;
+            }
+
+            .search-container {
+                max-width: 100%;
+            }
+
+            .search-bar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .search-bar a,
+            .search-bar button {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+
+            .category-card {
+                flex: 1 1 calc(25% - 20px);
+                max-width: calc(25% - 20px);
+            }
+
+            .nav-items ul {
+                gap: 10px;
+            }
+
+            .nav-items a {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .category-card {
+                flex: 1 1 calc(50% - 20px);
+                max-width: calc(50% - 20px);
+            }
+
+            .header-logos img {
+                height: 40px;
+            }
+
+            .header-logos span {
+                font-size: 14px;
+            }
+        }
+
+        footer a:hover {
+    text-decoration: underline;
+    color: #002f34;
+}
+
+@media (max-width: 768px) {
+    footer .container > div {
+        justify-content: flex-start;
+    }
+
+    footer div {
+        flex: 1 1 45% !important;
+    }
+}
+
+@media (max-width: 576px) {
+    footer div {
+        flex: 1 1 100% !important;
+    }
+
+    footer .follow-us-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    footer .follow-us-buttons img {
+        width: 80px !important;
+    }
+}
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="header-logos" style="margin-top: 20px; margin-left: 20px; display: flex; align-items: center; flex-wrap: wrap; gap: 10px;">
+                <img src="./images/logo.png" alt="Logo" style="max-height: 50px;">
+                <img src="./images/car_icon.jpg" alt="car_icon" style="max-height: 50px; border-radius: 50%;">
+                <span style="font-weight: bold;">Cars</span>
+                <img src="./images/property_icon.png" alt="property_icon" style="max-height: 50px; border-radius: 50%; object-fit: cover;">
+                <span style="font-weight: bold;">Property</span>
+            </div>
+
+            <div class="accordion-container" style="display: flex; align-items: center; gap: 20px; margin-top: 20px;">
+                <div class="accordion accordion-width">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="header1">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#panel1Collapse">
+                                <img src="images/location-vector-icon.png" alt="location_icon"
+                                    style="height: 30px; margin-right: 5px; border-radius: 10%; object-fit: contain;">
+                                Pakistan
+                            </button>
+                        </h2>
+                        <div id="panel1Collapse" class="accordion-collapse collapse" aria-labelledby="header1">
+                            <div class="accordion-body">
+                                This is the content for first Panel.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="search-bar" style="margin-top: 20px; display: flex;margin-left: 500px;margin-top: -90px; height: 100px;">
+                    <div class="search-container">
+                        <input type="text" class="form-control" placeholder="Search here..." aria-label="Search" id="search-input" style="font-size: large;">
+                        <div class="suggestions" id="suggestions"></div>
+                    </div>
+                    <button class="btn btn-dark" style="margin-left: 2px; display: flex; align-items: center; width: 40px; height: 38px;">
+                        <img src="images/search_icon.png" alt="search_icon" style="height: 20px; width: 20px;">
+                    </button>
+                    <a href="#" style="text-decoration: underline; font-weight: bold; color: black;">Login</a>
+                    <button style="
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 120px;
+                        height: 40px;
+                        background-color: white;
+                        border-radius: 20px;
+                        font-family: Arial, sans-serif;
+                        font-size: 16px;
+                        font-weight: bold;
+                        color: rgb(68, 65, 65);
+                        text-transform: uppercase;
+                        text-decoration: none;
+                        border: none;
+                        border-top: 4px solid #f5c518;
+                        border-left: 4px solid #00aaff;
+                        border-right: 4px solid #00aaff;
+                        border-bottom: 4px solid #00c4b4;
+                        box-shadow: 0 0 0 4px transparent;
+                    ">+ Sell</button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="full-width-line"></div>
+
+    <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap; padding: 0 15px;">
+        <span class="dropdown_com">
+            <button class="btn" style="background-color: white; color: black; font-size: 15px;">
+                ALL CATEGORIES
+                <img src="images/dropdown.png" alt="dropdown_icon" style="height: 16px; width: 16px; margin-left: 5px;">
+            </button>
+            <div class="dropdown-content">
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
+            </div>
+        </span>
+        <div class="nav-items">
+            <ul style="list-style-type: none; padding: 0; margin: 0;">
+                <li>
+                    <a href="#" style="text-decoration: none; color: black; font-size: 15px;">Cars</a>
+                </li>
+                <li>
+                    <a href="#" style="text-decoration: none; color: black; font-size: 15px;">Mobile Phones</a>
+                </li>
+                <li>
+                    <a href="#" style="text-decoration: none; color: black; font-size: 15px;">Laptops</a>
+                </li>
+                <li>
+                    <a href="#" style="text-decoration: none; color: black; font-size: 15px;">Bikes</a>
+                </li>
+                <li>
+                    <a href="#" style="text-decoration: none; color: black; font-size: 15px;">Furniture</a>
+                </li>
+                <li>
+                    <a href="#" style="text-decoration: none; color: black; font-size: 15px;">Electronics</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></li>
+                <li data-bs-target="#myCarousel" data-bs-slide-to="1"></li>
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                <div class="carousel-item active">
+                    <img src="./images/banner1.png" alt="banner1" class="d-block w-100">
+                </div>
+                <div class="carousel-item">
+                    <img src="./images/banner2.png" alt="banner2" class="d-block w-100">
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </a>
+        </div>
+    </div>
+    <img src="./images/ad_img.jpg" alt="ad_img" style="max-width: 100%; height: auto; margin: 20px auto; display: block;">
+    <div>
+        <h3>All CATEGORIES</h3>
+    </div>
+    <div class="container" id="category-container" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: flex-start;">
+    </div>
+
+    <div class="recommendations-container">
+        <h3 style="margin: 20px 0;">More in Fashion & Beauty</h3>
+        
+        </div>
+        <div class="container" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: flex-start; margin-top: 100px;">
+            <!-- Card 1 -->
+            <div style="border-radius: 8px; overflow: hidden; width: 100%; max-width: 250px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); transition: transform 0.2s;"
+                onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 4px 8px rgba(0, 0, 0, 0.15)'"
+                onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 2px 4px rgba(0, 0, 0, 0.1)'">
+                <img src="./images/REC_CARDS/image_fx.jpg" alt="New X touch sandals for men"
+                    style="width: 100%; height: 200px; object-fit: cover;">
+                <div style="padding: 10px; position: relative;">
+                    <span id="like-icon-1" style="position: absolute; top: 10px; right: 10px; font-size: 20px; color: #666; cursor: pointer;"
+                        onclick="toggleLike('like-icon-1', 'product-1')"
+                        onmouseover="if(this.innerHTML=='♡') this.style.color='#ff0000'"
+                        onmouseout="if(this.innerHTML=='♡') this.style.color='#666'">♡</span>
+                    <div style="font-size: 18px; font-weight: bold; color: #000; margin-bottom: 5px;">Rs 5500</div>
+                    <div style="font-size: 14px; color: #333; margin-bottom: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+                        New X touch sandals for men
+                    </div>
+                    <div style="font-size: 12px; color: #666; margin-bottom: 5px;">Federal B Area - Block 8, Karachi</div>
+                    <div style="font-size: 12px; color: #666;">1 day ago</div>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div style="border-radius: 8px; overflow: hidden; width: 100%; max-width: 250px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); transition: transform 0.2s;"
+                onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 4px 8px rgba(0, 0, 0, 0.15)'"
+                onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 2px 4px rgba(0, 0, 0, 0.1)'">
+                <img src="./images/REC_CARDS/image_fx (1).jpg" alt="Another Product"
+                    style="width: 100%; height: 200px; object-fit: cover;">
+                <div style="padding: 10px; position: relative;">
+                    <span id="like-icon-2" style="position: absolute; top: 10px; right: 10px; font-size: 20px; color: #666; cursor: pointer;"
+                        onclick="toggleLike('like-icon-2', 'product-2')"
+                        onmouseover="if(this.innerHTML=='♡') this.style.color='#ff0000'"
+                        onmouseout="if(this.innerHTML=='♡') this.style.color='#666'">♡</span>
+                    <div style="font-size: 18px; font-weight: bold; color: #000; margin-bottom: 5px;">Rs 3000</div>
+                    <div style="font-size: 14px; color: #333; margin-bottom: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+                        Another Product Title
+                    </div>
+                    <div style="font-size: 12px; color: #666; margin-bottom: 5px;">Another Location</div>
+                    <div style="font-size: 12px; color: #666;">2 days ago</div>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div style="border-radius: 8px; overflow: hidden; width: 100%; max-width: 300px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); transition: transform 0.2s;"
+                onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 4px 8px rgba(0, 0, 0, 0.15)'"
+                onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 2px 4px rgba(0, 0, 0, 0.1)'">
+                <img src="./images/REC_CARDS/image_fx (2).jpg" alt="Third Product"
+                    style="width: 100%; height: 200px; object-fit: cover;">
+                <div style="padding: 10px; position: relative;">
+                    <span id="like-icon-3" style="position: absolute; top: 10px; right: 10px; font-size: 20px; color: #666; cursor: pointer;"
+                        onclick="toggleLike('like-icon-3', 'product-3')"
+                        onmouseover="if(this.innerHTML=='♡') this.style.color='#ff0000'"
+                        onmouseout="if(this.innerHTML=='♡') this.style.color='#666'">♡</span>
+                    <div style="font-size: 18px; font-weight: bold; color: #000; margin-bottom: 5px;">Rs 4500</div>
+                    <div style="font-size: 14px; color: #333; margin-bottom: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+                        Third Product Title
+                    </div>
+                    <div style="font-size: 12px; color: #666; margin-bottom: 5px;">Third Location</div>
+                    <div style="font-size: 12px; color: #666;">3 days ago</div>
+                </div>
+            </div>
+            <!-- Card 4 -->
+            <div style="border-radius: 8px; overflow: hidden; width: 100%; max-width: 300px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); transition: transform 0.2s;"
+                onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 4px 8px rgba(0, 0, 0, 0.15)'"
+                onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 2px 4px rgba(0, 0, 0, 0.1)'">
+                <img src="./images/REC_CARDS/image_fx(4).jpg" alt="Fourth Product"
+                    style="width: 100%; height: 200px; object-fit: cover;">
+                <div style="padding: 10px; position: relative;">
+                    <span id="like-icon-4" style="position: absolute; top: 10px; right: 10px; font-size: 20px; color: #666; cursor: pointer;"
+                        onclick="toggleLike('like-icon-4', 'product-4')"
+                        onmouseover="if(this.innerHTML=='♡') this.style.color='#ff0000'"
+                        onmouseout="if(this.innerHTML=='♡') this.style.color='#666'">♡</span>
+                    <div style="font-size: 18px; font-weight: bold; color: #000; margin-bottom: 5px;">Rs 6000</div>
+                    <div style="font-size: 14px; color: #333; margin-bottom: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+                        Fourth Product Title
+                    </div>
+                    <div style="font-size: 12px; color: #666; margin-bottom: 5px;">Fourth Location</div>
+                    <div style="font-size: 12px; color: #666;">4 days ago</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h3 style="margin: 20px 0;">More in Fashion & Beauty</h3>
+        
+        </div>
+        <div class="container" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: flex-start; margin-top: 100px;">
+            <!-- Card 1 -->
+            <div style="border-radius: 8px; overflow: hidden; width: 100%; max-width: 250px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); transition: transform 0.2s;"
+                onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 4px 8px rgba(0, 0, 0, 0.15)'"
+                onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 2px 4px rgba(0, 0, 0, 0.1)'">
+                <img src="./images/REC_CARDS/image_fx.jpg" alt="New X touch sandals for men"
+                    style="width: 100%; height: 200px; object-fit: cover;">
+                <div style="padding: 10px; position: relative;">
+                    <span id="like-icon-1" style="position: absolute; top: 10px; right: 10px; font-size: 20px; color: #666; cursor: pointer;"
+                        onclick="toggleLike('like-icon-1', 'product-1')"
+                        onmouseover="if(this.innerHTML=='♡') this.style.color='#ff0000'"
+                        onmouseout="if(this.innerHTML=='♡') this.style.color='#666'">♡</span>
+                    <div style="font-size: 18px; font-weight: bold; color: #000; margin-bottom: 5px;">Rs 5500</div>
+                    <div style="font-size: 14px; color: #333; margin-bottom: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+                        New X touch sandals for men
+                    </div>
+                    <div style="font-size: 12px; color: #666; margin-bottom: 5px;">Federal B Area - Block 8, Karachi</div>
+                    <div style="font-size: 12px; color: #666;">1 day ago</div>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div style="border-radius: 8px; overflow: hidden; width: 100%; max-width: 250px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); transition: transform 0.2s;"
+                onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 4px 8px rgba(0, 0, 0, 0.15)'"
+                onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 2px 4px rgba(0, 0, 0, 0.1)'">
+                <img src="./images/REC_CARDS/image_fx (1).jpg" alt="Another Product"
+                    style="width: 100%; height: 200px; object-fit: cover;">
+                <div style="padding: 10px; position: relative;">
+                    <span id="like-icon-2" style="position: absolute; top: 10px; right: 10px; font-size: 20px; color: #666; cursor: pointer;"
+                        onclick="toggleLike('like-icon-2', 'product-2')"
+                        onmouseover="if(this.innerHTML=='♡') this.style.color='#ff0000'"
+                        onmouseout="if(this.innerHTML=='♡') this.style.color='#666'">♡</span>
+                    <div style="font-size: 18px; font-weight: bold; color: #000; margin-bottom: 5px;">Rs 3000</div>
+                    <div style="font-size: 14px; color: #333; margin-bottom: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+                        Another Product Title
+                    </div>
+                    <div style="font-size: 12px; color: #666; margin-bottom: 5px;">Another Location</div>
+                    <div style="font-size: 12px; color: #666;">2 days ago</div>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div style="border-radius: 8px; overflow: hidden; width: 100%; max-width: 300px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); transition: transform 0.2s;"
+                onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 4px 8px rgba(0, 0, 0, 0.15)'"
+                onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 2px 4px rgba(0, 0, 0, 0.1)'">
+                <img src="./images/REC_CARDS/image_fx (2).jpg" alt="Third Product"
+                    style="width: 100%; height: 200px; object-fit: cover;">
+                <div style="padding: 10px; position: relative;">
+                    <span id="like-icon-3" style="position: absolute; top: 10px; right: 10px; font-size: 20px; color: #666; cursor: pointer;"
+                        onclick="toggleLike('like-icon-3', 'product-3')"
+                        onmouseover="if(this.innerHTML=='♡') this.style.color='#ff0000'"
+                        onmouseout="if(this.innerHTML=='♡') this.style.color='#666'">♡</span>
+                    <div style="font-size: 18px; font-weight: bold; color: #000; margin-bottom: 5px;">Rs 4500</div>
+                    <div style="font-size: 14px; color: #333; margin-bottom: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+                        Third Product Title
+                    </div>
+                    <div style="font-size: 12px; color: #666; margin-bottom: 5px;">Third Location</div>
+                    <div style="font-size: 12px; color: #666;">3 days ago</div>
+                </div>
+            </div>
+            <!-- Card 4 -->
+            <div style="border-radius: 8px; overflow: hidden; width: 100%; max-width: 300px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); transition: transform 0.2s;"
+                onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 4px 8px rgba(0, 0, 0, 0.15)'"
+                onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 2px 4px rgba(0, 0, 0, 0.1)'">
+                <img src="./images/REC_CARDS/image_fx(4).jpg" alt="Fourth Product"
+                    style="width: 100%; height: 200px; object-fit: cover;">
+                <div style="padding: 10px; position: relative;">
+                    <span id="like-icon-4" style="position: absolute; top: 10px; right: 10px; font-size: 20px; color: #666; cursor: pointer;"
+                        onclick="toggleLike('like-icon-4', 'product-4')"
+                        onmouseover="if(this.innerHTML=='♡') this.style.color='#ff0000'"
+                        onmouseout="if(this.innerHTML=='♡') this.style.color='#666'">♡</span>
+                    <div style="font-size: 18px; font-weight: bold; color: #000; margin-bottom: 5px;">Rs 6000</div>
+                    <div style="font-size: 14px; color: #333; margin-bottom: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+                        Fourth Product Title
+                    </div>
+                    <div style="font-size: 12px; color: #666; margin-bottom: 5px;">Fourth Location</div>
+                    <div style="font-size: 12px; color: #666;">4 days ago</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h3 style="margin: 20px 0;">More in Fashion & Beauty</h3>
+        
+        </div>
+        <div class="container" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: flex-start; margin-top: 100px;">
+            <!-- Card 1 -->
+            <div style="border-radius: 8px; overflow: hidden; width: 100%; max-width: 250px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); transition: transform 0.2s;"
+                onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 4px 8px rgba(0, 0, 0, 0.15)'"
+                onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 2px 4px rgba(0, 0, 0, 0.1)'">
+                <img src="./images/REC_CARDS/image_fx.jpg" alt="New X touch sandals for men"
+                    style="width: 100%; height: 200px; object-fit: cover;">
+                <div style="padding: 10px; position: relative;">
+                    <span id="like-icon-1" style="position: absolute; top: 10px; right: 10px; font-size: 20px; color: #666; cursor: pointer;"
+                        onclick="toggleLike('like-icon-1', 'product-1')"
+                        onmouseover="if(this.innerHTML=='♡') this.style.color='#ff0000'"
+                        onmouseout="if(this.innerHTML=='♡') this.style.color='#666'">♡</span>
+                    <div style="font-size: 18px; font-weight: bold; color: #000; margin-bottom: 5px;">Rs 5500</div>
+                    <div style="font-size: 14px; color: #333; margin-bottom: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+                        New X touch sandals for men
+                    </div>
+                    <div style="font-size: 12px; color: #666; margin-bottom: 5px;">Federal B Area - Block 8, Karachi</div>
+                    <div style="font-size: 12px; color: #666;">1 day ago</div>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div style="border-radius: 8px; overflow: hidden; width: 100%; max-width: 250px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); transition: transform 0.2s;"
+                onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 4px 8px rgba(0, 0, 0, 0.15)'"
+                onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 2px 4px rgba(0, 0, 0, 0.1)'">
+                <img src="./images/REC_CARDS/image_fx (1).jpg" alt="Another Product"
+                    style="width: 100%; height: 200px; object-fit: cover;">
+                <div style="padding: 10px; position: relative;">
+                    <span id="like-icon-2" style="position: absolute; top: 10px; right: 10px; font-size: 20px; color: #666; cursor: pointer;"
+                        onclick="toggleLike('like-icon-2', 'product-2')"
+                        onmouseover="if(this.innerHTML=='♡') this.style.color='#ff0000'"
+                        onmouseout="if(this.innerHTML=='♡') this.style.color='#666'">♡</span>
+                    <div style="font-size: 18px; font-weight: bold; color: #000; margin-bottom: 5px;">Rs 3000</div>
+                    <div style="font-size: 14px; color: #333; margin-bottom: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+                        Another Product Title
+                    </div>
+                    <div style="font-size: 12px; color: #666; margin-bottom: 5px;">Another Location</div>
+                    <div style="font-size: 12px; color: #666;">2 days ago</div>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div style="border-radius: 8px; overflow: hidden; width: 100%; max-width: 300px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); transition: transform 0.2s;"
+                onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 4px 8px rgba(0, 0, 0, 0.15)'"
+                onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 2px 4px rgba(0, 0, 0, 0.1)'">
+                <img src="./images/REC_CARDS/image_fx (2).jpg" alt="Third Product"
+                    style="width: 100%; height: 200px; object-fit: cover;">
+                <div style="padding: 10px; position: relative;">
+                    <span id="like-icon-3" style="position: absolute; top: 10px; right: 10px; font-size: 20px; color: #666; cursor: pointer;"
+                        onclick="toggleLike('like-icon-3', 'product-3')"
+                        onmouseover="if(this.innerHTML=='♡') this.style.color='#ff0000'"
+                        onmouseout="if(this.innerHTML=='♡') this.style.color='#666'">♡</span>
+                    <div style="font-size: 18px; font-weight: bold; color: #000; margin-bottom: 5px;">Rs 4500</div>
+                    <div style="font-size: 14px; color: #333; margin-bottom: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+                        Third Product Title
+                    </div>
+                    <div style="font-size: 12px; color: #666; margin-bottom: 5px;">Third Location</div>
+                    <div style="font-size: 12px; color: #666;">3 days ago</div>
+                </div>
+            </div>
+            <!-- Card 4 -->
+            <div style="border-radius: 8px; overflow: hidden; width: 100%; max-width: 300px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); transition: transform 0.2s;"
+                onmouseover="this.style.transform='scale(1.02)'; this.style.boxShadow='0 4px 8px rgba(0, 0, 0, 0.15)'"
+                onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 2px 4px rgba(0, 0, 0, 0.1)'">
+                <img src="./images/REC_CARDS/image_fx(4).jpg" alt="Fourth Product"
+                    style="width: 100%; height: 200px; object-fit: cover;">
+                <div style="padding: 10px; position: relative;">
+                    <span id="like-icon-4" style="position: absolute; top: 10px; right: 10px; font-size: 20px; color: #666; cursor: pointer;"
+                        onclick="toggleLike('like-icon-4', 'product-4')"
+                        onmouseover="if(this.innerHTML=='♡') this.style.color='#ff0000'"
+                        onmouseout="if(this.innerHTML=='♡') this.style.color='#666'">♡</span>
+                    <div style="font-size: 18px; font-weight: bold; color: #000; margin-bottom: 5px;">Rs 6000</div>
+                    <div style="font-size: 14px; color: #333; margin-bottom: 5px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+                        Fourth Product Title
+                    </div>
+                    <div style="font-size: 12px; color: #666; margin-bottom: 5px;">Fourth Location</div>
+                    <div style="font-size: 12px; color: #666;">4 days ago</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="display: flex; margin-top: 20px; margin-left: 100px; width: 100%; height: 200px; overflow: hidden; background-color: rgb(245, 248, 248);">
+        <img src="./images/footer_img/img_1.png" alt="Image 1" style="width: 30%; height: 100%; object-fit: cover; margin-left: 1px;">
+        <div style="flex: 1; padding: 20px; display: flex; align-items: center; justify-content: flex-start; background-color: white;">
+            <div style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; margin-left: 10px;">
+                <h4 style="font-size: 30px; color: black; font-weight: bold;">Try the OLX app</h4>
+                <h6 style="font-size: 20px; color: black;">Buy, sell and find just <br>about anything using the <br> app on your mobile.</h6>
+            </div>
+            <div style="display: flex; justify-content: center; align-items: center; gap: 2px; margin-left: 5px;">
+                <img src="./images/footer_img/AppStore.png"  alt="Google Play" style="width: 160px; height: 80px;">
+                <img src="./images/footer_img/GooglePlay.png" alt="App Store" style="width: 150px; height: 100px; object-fit: cover;">
+                <img src="./images/footer_img/AppGallery.png" alt="App Gallery" style="width: 150px; height: 50px; object-fit: cover;">
+            </div>
+    </div>
+        </div>
+    </div>
+    <!-- Footer HTML -->
+<footer style="background-color: #ebeeef; padding: 40px 0; border-top: 1px solid #d3d3d3;">
+    <div class="container">
+        <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between;">
+            <!-- Popular Categories -->
+            <div style="flex: 1 1 150px; min-width: 150px;">
+                <h5 style="font-size: 14px; font-weight: bold; margin-bottom: 15px; color: #002f34;">POPULAR CATEGORIES</h5>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    <li><a href="#" style="font-size: 12px; color: #4a4a4a; text-decoration: none; line-height: 1.8;">Cars</a></li>
+                    <li><a href="#" style="font-size: 12px; color: #4a4a4a; text-decoration: none; line-height: 1.8;">Flats for rent</a></li>
+                    <li><a href="#" style="font-size: 12px; color: #4a4a4a; text-decoration: none; line-height: 1.8;">Mobile Phones</a></li>
+                    <li><a href="#" style="font-size: 12px; color: #4a4a4a; text-decoration: none; line-height: 1.8;">Jobs</a></li>
+                    <li><a href="#" style="font-size: 12px; color: #4a4a4a; text-decoration: none; line-height: 1.8;">Dogs</a></li>
+                </ul>
+            </div>
+
+            <!-- Trending Searches -->
+            <div style="flex: 1 1 150px; min-width: 150px;">
+                <h5 style="font-size: 14px; font-weight: bold; margin-bottom: 15px; color: #002f34;">TRENDING SEARCHES</h5>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    <li><a href="#" style="font-size: 12px; color: #4a4a4a; text-decoration: none; line-height: 1.8;">Bikes</a></li>
+                    <li><a href="#" style="font-size: 12px; color: #4a4a4a; text-decoration: none; line-height: 1.8;">Watches</a></li>
+                    <li><a href="#" style="font-size: 12px; color: #4a4a4a; text-decoration: none; line-height: 1.8;">Books</a></li>
+                </ul>
+            </div>
+
+            <!-- About Us -->
+            <div style="flex: 1 1 150px; min-width: 150px;">
+                <h5 style="font-size: 14px; font-weight: bold; margin-bottom: 15px; color: #002f34;">ABOUT US</h5>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    <li><a href="#" style="font-size: 12px; color: #4a4a4a; text-decoration: none; line-height: 1.8;">About Dubizzle Group</a></li>
+                    <li><a href="#" style="font-size: 12px; color: #4a4a4a; text-decoration: none; line-height: 1.8;">OLX Blog</a></li>
+                    <li><a href="#" style="font-size: 12px; color: #4a4a4a; text-decoration: none; line-height: 1.8;">Contact Us</a></li>
+                    <li><a href="#" style="font-size: 12px; color: #4a4a4a; text-decoration: none; line-height: 1.8;">OLX for Businesses</a></li>
+                </ul>
+            </div>
+
+            <!-- OLX -->
+            <div style="flex: 1 1 150px; min-width: 150px;">
+                <h5 style="font-size: 14px; font-weight: bold; margin-bottom: 15px; color: #002f34;">OLX</h5>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    <li><a href="#" style="font-size: 12px; color: #4a4a4a; text-decoration: none; line-height: 1.8;">Help</a></li>
+                    <li><a href="#" style="font-size: 12px; color: #4a4a4a; text-decoration: none; line-height: 1.8;">Sitemap</a></li>
+                    <li><a href="#" style="font-size: 12px; color: #4a4a4a; text-decoration: none; line-height: 1.8;">Terms of use</a></li>
+                    <li><a href="#" style="font-size: 12px; color: #4a4a4a; text-decoration: none; line-height: 1.8;">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <!-- Follow Us -->
+            <div style="flex: 1 1 150px; min-width: 150px;">
+                <h5 style="font-size: 14px; font-weight: bold; margin-bottom: 15px; color: #002f34;">FOLLOW US</h5>
+                <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                    <a href="#" style="text-decoration: none;"><img src="path/to/twitter-icon.png" alt="Twitter" style="width: 24px; height: 24px;"></a>
+                    <a href="#" style="text-decoration: none;"><img src="path/to/facebook-icon.png" alt="Facebook" style="width: 24px; height: 24px;"></a>
+                    <a href="#" style="text-decoration: none;"><img src="path/to/youtube-icon.png" alt="YouTube" style="width: 24px; height: 24px;"></a>
+                    <a href="#" style="text-decoration: none;"><img src="path/to/instagram-icon.png" alt="Instagram" style="width: 24px; height: 24px;"></a>
+                </div>
+                <div style="display: flex; flex-wrap: nowrap; gap: 10px; align-items: center; justify-content: center;">
+                    <a href="#" style="text-decoration: none;"><img src="./images/footer_img/AppStore.png" alt="App Store" style="width: 100px; height: auto;"></a>
+                    <a href="#" style="text-decoration: none;"><img src="./images/footer_img/GooglePlay.png" alt="Google Play" style="width: 100px; height: auto;"></a>
+                    <a href="#" style="text-decoration: none;"><img src="./images/footer_img/AppGallery.png" alt="App Gallery" style="width: 100px; height: auto;"></a>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright Notice -->
+        <div style="background-color: #002f34; color: white; text-align: center; padding: 10px; margin-top: 20px; font-size: 12px;">
+            Free Classifieds in Pakistan . © 2006-2025 OLX
+        </div>
+    </div>
+</footer>
+
+    <script>
+        const suggestionsList = [
+            "Cars", "Mobile Phones", "Laptops", "Bikes", "Furniture", "Electronics",
+            "Clothes", "Books", "Appliances", "Jewelry"
+        ];
+
+        const searchInput = document.getElementById("search-input");
+        const suggestionsDiv = document.getElementById("suggestions");
+
+        searchInput.addEventListener("input", function () {
+            const query = this.value.toLowerCase();
+            suggestionsDiv.innerHTML = "";
+            if (query) {
+                const filteredSuggestions = suggestionsList.filter(item =>
+                    item.toLowerCase().includes(query)
+                );
+                if (filteredSuggestions.length > 0) {
+                    filteredSuggestions.forEach(item => {
+                        const suggestionItem = document.createElement("div");
+                        suggestionItem.textContent = item;
+                        suggestionItem.addEventListener("click", () => {
+                            searchInput.value = item;
+                            suggestionsDiv.style.display = "none";
+                        });
+                        suggestionsDiv.appendChild(suggestionItem);
+                    });
+                    suggestionsDiv.style.display = "block";
+                } else {
+                    suggestionsDiv.style.display = "none";
+                }
+            } else {
+                suggestionsDiv.style.display = "none";
+            }
+        });
+
+        document.addEventListener("click", function (e) {
+            if (!searchInput.contains(e.target) && !suggestionsDiv.contains(e.target)) {
+                suggestionsDiv.style.display = "none";
+            }
+        });
+
+        jQuery(document).ready(function () {
+            jQuery("#myCarousel").carousel({ interval: 3000 });
+        });
+
+        const categoryContainer = document.getElementById('category-container');
+        const categories = [
+            { img: "./images/card_img/mobiles.png", text: "MOBILES", href: "#mobiles" },
+            { img: "./images/card_img/vehicles.png", text: "VEHICLES", href: "#vehicles" },
+            { img: "./images/card_img/property.png", text: "PROPERTY", href: "#property" },
+            { img: "./images/card_img/property-for-rent.png", text: "BIKES", href: "#bikes" },
+            { img: "./images/card_img/electronics-home-appliances.png", text: "FURNITURE", href: "#furniture" },
+            { img: "./images/card_img/bikes.png", text: "ELECTRONICS", href: "#electronics" },
+            { img: "./images/card_img/business-industrial-agriculture.png", text: "CLOTHES", href: "#clothes" },
+            { img: "./images/card_img/services.png", text: "BOOKS", href: "#books" },
+            { img: "./images/card_img/jobs.png", text: "APPLIANCES", href: "#appliances" },
+            { img: "./images/card_img/animals.png", text: "JEWELRY", href: "#jewelry" },
+            { img: "./images/card_img/furniture-home-decor.png", text: "TOYS", href: "#toys" },
+            { img: "./images/card_img/fashion-beauty.png", text: "SPORTS", href: "#sports" },
+            { img: "./images/card_img/books-sports-hobbies.png", text: "MUSIC", href: "#music" },
+            { img: "./images/card_img/kids.png", text: "TOOLS", href: "#tools" }
+        ];
+
+        categories.forEach(category => {
+            const categoryCard = document.createElement('div');
+            categoryCard.className = 'category-card';
+            categoryCard.innerHTML = `
+                <a href="${category.href}" style="text-decoration: none; color: inherit;">
+                    <img src="${category.img}" alt="${category.text}">
+                    <p>${category.text}</p>
+                </a>
+            `;
+            categoryContainer.appendChild(categoryCard);
+        });
+    </script>
+</body>
+<!-- Footer-Related CSS -->
+<style>
+    footer {
+        flex-shrink: 0;
+        background-color: #ebeeef;
+        padding: 40px 0;
+        border-top: 1px solid #d3d3d3;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+
+    footer a:hover {
+        text-decoration: underline;
+        color: #002f34;
+    }
+
+    @media (max-width: 768px) {
+        footer .container > div {
+            justify-content: flex-start;
+        }
+
+        footer div {
+            flex: 1 1 45% !important;
+        }
+    }
+
+    @media (max-width: 576px) {
+        footer div {
+            flex: 1 1 100% !important;
+        }
+
+        footer [style*="display: flex; flex-wrap: nowrap; gap: 10px; align-items: center; justify-content: center;"] {
+            flex-direction: column !important;
+            gap: 10px !important;
+        }
+
+        footer [style*="display: flex; flex-wrap: nowrap; gap: 10px; align-items: center; justify-content: center;"] img {
+            width: 80px !important;
+        }
+    }
+</style>
+</html>

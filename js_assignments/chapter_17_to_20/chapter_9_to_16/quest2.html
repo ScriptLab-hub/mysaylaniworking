@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 2: Empty Array Object Notation</title>
+    <style>
+        body { font-family: 'Inter', sans-serif; margin: 20px; background-color: #f4f4f4; color: #333; }
+        h1 { color: #0056b3; }
+        pre { background-color: #e9e9e9; padding: 10px; border-radius: 5px; overflow-x: auto; }
+        .output { margin-top: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; background-color: #fff; }
+    </style>
+</head>
+<body>
+    <h1>Question 2: Declare an empty array using JS object notation to store student names in future.</h1>
+
+    <pre>
+        <code>
+            let studentNamesObject = new Array();
+            // This array is now empty and ready to store student names.
+        </code>
+    </pre>
+
+    <div class="output">
+        <h2>Output:</h2>
+        <p id="outputMessage"></p>
+    </div>
+
+    <script>
+        // Declare an empty array using JS object notation
+        let studentNamesObject = new Array();
+
+        // Display a message to confirm the array is created
+        document.getElementById("outputMessage").textContent = 
+            "An empty array 'studentNamesObject' has been declared using object notation. Its initial content is: " + JSON.stringify(studentNamesObject);
+
+        // You can check its type and length in the console
+        console.log("studentNamesObject:", studentNamesObject);
+        console.log("Type of studentNamesObject:", typeof studentNamesObject);
+        console.log("Length of studentNamesObject:", studentNamesObject.length);
+    </script>
+</body>
+</html>

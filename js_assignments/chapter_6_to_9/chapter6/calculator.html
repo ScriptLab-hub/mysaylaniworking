@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Grade Calculator</title>
+</head>
+<body>
+    <h2>Grade Calculator</h2>
+    <script>
+        // Take marks from user
+        var totalMarks = +prompt("Enter total marks:");
+        var obtainedMarks = +prompt("Enter obtained marks:");
+
+        // Calculate percentage
+        var percentage = (obtainedMarks / totalMarks) * 100;
+
+        // Determine grade
+        var grade = "";
+        if (percentage >= 90 && percentage <= 99) {
+            grade = "A-One";
+        } else if (percentage >= 80 && percentage <= 89) {
+            grade = "A";
+        } else if (percentage >= 70 && percentage <= 79) {
+            grade = "B+";
+        } else if (percentage >= 60 && percentage <= 69) {
+            grade = "B";
+        } else if (percentage >= 50 && percentage <= 59) {
+            grade = "C";
+        } else if (percentage < 50) {
+            grade = "Fail";
+        } else {
+            grade = "Invalid Percentage";
+        }
+
+        // Show result
+        document.write("<b>Total Marks:</b> " + totalMarks + "<br>");
+        document.write("<b>Obtained Marks:</b> " + obtainedMarks + "<br>");
+        document.write("<b>Percentage:</b> " + percentage.toFixed(2) + "%<br>");
+        document.write("<b>Grade:</b> " + grade + "<br>");
+    </script>
+</body>
+</html>

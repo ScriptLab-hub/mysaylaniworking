@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instant Greeting</title>
+    <style>
+        /* Very basic styling to show a blank page */
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome Page!</h1>
+
+    <script>
+        // This script will run as soon as the page loads.
+
+        // Ask the user for their name using a prompt
+        let userName = prompt("What is your name?");
+
+        // Check if the user provided a name (not null and not just whitespace)
+        if (userName !== null && userName.trim() !== '') {
+            // Remove any extra spaces from the name
+            userName = userName.trim();
+            // Create the greeting message
+            const greetingMessage = `Hello, ${userName}!`;
+            // Display the greeting message in an alert
+            alert(greetingMessage);
+        } else {
+            // If no name was provided, alert the user
+            alert("Please enter your name!");
+        }
+    </script>
+</body>
+</html>

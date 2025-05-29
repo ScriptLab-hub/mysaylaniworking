@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Multiplication Table</title>
+    <style>
+        /* Very basic styling for a beginner look */
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #f0f0f0; /* Light gray background */
+            color: #333;
+        }
+        .container {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+        }
+        input[type="number"] {
+            width: calc(100% - 20px); /* Account for padding */
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50; /* Green button */
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #tableOutput {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #eee;
+            background-color: #f9f9f9;
+            text-align: left;
+            min-height: 100px; /* Give it some space */
+            white-space: pre-wrap; /* Preserve newlines */
+        }
+        .error-message {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Multiplication Table</h1>
+        <p>Enter a number:</p>
+
+        <div>
+            <input type="number" id="numberInput" placeholder="e.g., 5">
+        </div>
+        <button id="generateTableButton">
+            Show Table
+        </button>
+
+        <div id="tableOutput">
+            <p>Table will appear here.</p>
+        </div>
+    </div>
+
+    <script>
+        // Get references to the HTML elements
+        const numberInput = document.getElementById('numberInput');
+        const generateButton = document.getElementById('generateTableButton');
+        const tableOutput = document.getElementById('tableOutput');
+
+        // Add an event listener to the button
+        generateButton.addEventListener('click', () => {
+            // Get the value from the input field
+            let inputNum = numberInput.value;
+
+            // Convert the input to a number
+            let num = parseInt(inputNum);
+
+            // Check if the input is a valid number.
+            // If the input is empty or not a valid number, default to 5.
+            if (isNaN(num) || inputNum.trim() === '') {
+                num = 5; // Default to 5 if input is invalid or empty
+                // Display a message indicating default behavior
+                tableOutput.innerHTML = `<p class="error-message">No valid number entered. Showing table for 5 by default.</p>`;
+            } else {
+                // Clear any previous error messages if a valid number is entered
+                tableOutput.innerHTML = '';
+            }
+
+            // Create a string to hold the multiplication table
+            let tableContent = `<h3>Table of ${num}:</h3>`;
+
+            // Loop from 1 to 10 to generate the table rows
+            for (let i = 1; i <= 10; i++) {
+                const result = num * i;
+                tableContent += `${num} x ${i} = ${result}<br>`; // Add each line with a line break
+            }
+
+            // Display the generated table in the tableOutput div
+            tableOutput.innerHTML += tableContent;
+        });
+    </script>
+</body>
+</html>

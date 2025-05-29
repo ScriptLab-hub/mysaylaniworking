@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9. Find Smallest Number</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 40px auto;
+            text-align: center;
+        }
+        h1 {
+            color: #0056b3;
+            margin-bottom: 25px;
+        }
+        .array-display {
+            background-color: #e9ecef;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 20px auto;
+            font-size: 1.1em;
+            display: inline-block;
+            color: #495057;
+        }
+        .result-output {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            border-radius: 5px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #0c5460;
+        }
+        .error-output {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            border-radius: 5px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>9. Find the Smallest Number in an Array</h1>
+        <p>Given Array: <span id="arrayDisplay" class="array-display"></span></p>
+
+        <div id="smallestNumberOutput" class="result-output">
+            Calculating...
+        </div>
+    </div>
+
+    <script>
+        const A = [24, 53, 78, 91, 12];
+        const arrayDisplayElement = document.getElementById('arrayDisplay');
+        const smallestNumberOutputElement = document.getElementById('smallestNumberOutput');
+
+        arrayDisplayElement.textContent = `[${A.join(', ')}]`;
+
+        function findSmallestNumber(arr) {
+            if (arr.length === 0) {
+                return null;
+            }
+            let smallestNumber = arr[0];
+            for (let i = 1; i < arr.length; i++) {
+                if (arr[i] < smallestNumber) {
+                    smallestNumber = arr[i];
+                }
+            }
+            return smallestNumber;
+        }
+
+        const smallest = findSmallestNumber(A);
+
+        if (smallest !== null) {
+            smallestNumberOutputElement.textContent = `The smallest number is: ${smallest}`;
+            smallestNumberOutputElement.className = 'result-output';
+        } else {
+            smallestNumberOutputElement.textContent = "The array is empty. Cannot find the smallest number.";
+            smallestNumberOutputElement.className = 'error-output';
+        }
+
+        console.log("9. Original Array:", A);
+        console.log("9. Smallest Number:", smallest);
+    </script>
+</body>
+</html>

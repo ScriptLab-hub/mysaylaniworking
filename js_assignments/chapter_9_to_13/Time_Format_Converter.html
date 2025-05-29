@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Format Converter</title>
+</head>
+<body>
+    <script>
+        let time = prompt("Enter time in 12-hour format (e.g., 7PM, 10AM):").toUpperCase();
+
+        if (time.includes("AM")) {
+            let hour = parseInt(time);
+            if (hour >= 1 && hour < 6) {
+                alert("It's Early Morning");
+            } else if (hour >= 6 && hour < 12) {
+                alert("It's Morning");
+            } else {
+                alert("Invalid time entered!");
+            }
+        } else if (time.includes("PM")) {
+            let hour = parseInt(time);
+            if (hour >= 1 && hour < 5) {
+                alert("It's Afternoon");
+            } else if (hour >= 5 && hour < 8) {
+                alert("It's Evening");
+            } else if (hour >= 8 && hour <= 11) {
+                alert("It's Night");
+            } else {
+                alert("Invalid time entered!");
+            }
+        } else {
+            alert("Invalid format! Please enter time as HHAM or HHPM (e.g., 7PM, 10AM).");
+        }
+    </script>
+</body>
+</html>

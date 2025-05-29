@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Variables For Numbers</title>
+</head>
+<body>
+    <script>
+        // 1. Declare a variable called age & assign to it your age. Show your age in an alert box.
+        var age = 25;
+        alert("I am " + age + " years old");
+
+        // 2. Declare & initialize a variable to keep track of how many times a visitor has visited a web page.
+        var visitCount = localStorage.getItem('visitCount');
+        if (visitCount === null) {
+            visitCount = 1;
+        } else {
+            visitCount = Number(visitCount) + 1;
+        }
+        localStorage.setItem('visitCount', visitCount);
+        document.write("You have visited this site " + visitCount + " times<br>");
+
+        // 3. Declare a variable called birthYear & assign to it your birth year. Show the following message in your browser:
+        var birthYear = 1999;
+        document.write("My birth year is " + birthYear + "<br>");
+        document.write("Data type of my declared variable is " + typeof birthYear + "<br>");
+
+        // 4. Online clothing store order message
+        var visitorName = "John Doe";
+        var productTitle = "T-shirt(s)";
+        var quantity = 5;
+        document.write(visitorName + " ordered " + quantity + " " + productTitle + " on XYZ Clothing store");
+    </script>
+</body>
+</html>
+
+
+
+ <!-- Explanation of document.write:
+
+---
+
+### What is `document.write`?
+
+`document.write` is a JavaScript method used to write text, HTML, or values directly into the HTML document **while the page is loading**.
+
+
+
+**Summary:**  
+`document.write` is a simple way to add content to a page as it loads, but it’s outdated for most real-world uses. Prefer DOM methods for dynamic content. -->

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Programs</title>
+</head>
+<body>
+    <script>
+        // 7. Guess Game
+        let secretNumber = Math.floor(Math.random() * 10) + 1;
+        let guess = parseInt(prompt("Guess the secret number (between 1 and 10):"));
+
+        if (guess === secretNumber) {
+            alert("Bingo! Correct answer");
+        } else if (guess + 1 === secretNumber) {
+            alert("Close enough to the correct answer");
+        } else {
+            alert("Wrong guess! Try again.");
+        }
+
+        // 8. Check Divisibility by 3
+        let num = parseInt(prompt("Enter a number:"));
+        if (num % 3 === 0) {
+            alert(num + " is divisible by 3.");
+        } else {
+            alert(num + " is not divisible by 3.");
+        }
+
+        // 9. Even or Odd Check
+        let number = parseInt(prompt("Enter a number:"));
+        if (number % 2 === 0) {
+            alert(number + " is an even number.");
+        } else {
+            alert(number + " is an odd number.");
+        }
+
+        // 10. Temperature-Based Message
+        let temperature = parseFloat(prompt("Enter the temperature:"));
+
+        if (temperature > 40) {
+            alert("It is too hot outside.");
+        } else if (temperature > 30) {
+            alert("The Weather today is Normal.");
+        } else if (temperature > 20) {
+            alert("Today's Weather is cool.");
+        } else if (temperature > 10) {
+            alert("OMG! Today's weather is so Cool.");
+        } else {
+            alert("Extreme cold! Stay warm.");
+        }
+
+        // 11. Simple Calculator
+        let firstNumber = parseFloat(prompt("Enter first number:"));
+        let secondNumber = parseFloat(prompt("Enter second number:"));
+        let operation = prompt("Enter operation (+, -, *, /, %):");
+
+        let result;
+
+        if (operation === "+") {
+            result = firstNumber + secondNumber;
+        } else if (operation === "-") {
+            result = firstNumber - secondNumber;
+        } else if (operation === "*") {
+            result = firstNumber * secondNumber;
+        } else if (operation === "/") {
+            result = firstNumber / secondNumber;
+        } else if (operation === "%") {
+            result = firstNumber % secondNumber;
+        } else {
+            alert("Invalid operation! Please enter +, -, *, / or %.");
+        }
+
+        if (result !== undefined) {
+            alert("Result: " + result);
+        }
+    </script>
+</body>
+</html>

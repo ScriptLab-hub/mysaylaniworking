@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Variable Name Legal & Illegal</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; }
+        .illegal { color: red; }
+        .legal { color: green; }
+        code { background: #f4f4f4; padding: 2px 4px; border-radius: 3px; }
+    </style>
+</head>
+<body>
+    <h1>Rules for naming JS variables</h1>
+    <ol>
+        <li>
+            <strong>Declare 3 variables in one statement:</strong><br>
+            <code>var a, b, c;</code>
+        </li>
+        <li>
+            <strong>5 Legal variable names:</strong>
+            <ul>
+                <li class="legal"><div>myVariable</div></li>
+                <li class="legal"><code>_myVar</code></li>
+                <li class="legal"><code>$dollar</code></li>
+                <li class="legal"><code>name1</code></li>
+                <li class="legal"><code>user_name</code></li>
+            </ul>
+            <strong>5 Illegal variable names:</strong>
+            <ul>
+                <li class="illegal"><code>1name</code> (cannot start with a digit)</li>
+                <li class="illegal"><code>my-variable</code> (hyphens not allowed)</li>
+                <li class="illegal"><code>var</code> (reserved keyword)</li>
+                <li class="illegal"><code>user name</code> (spaces not allowed)</li>
+                <li class="illegal"><code>@value</code> (special characters not allowed)</li>
+            </ul>
+        </li>
+        <li>
+            <strong>Rules:</strong>
+            <ul>
+                <li>Variable names can only contain <u>letters</u>, <u>numbers</u>, <u>$</u> and <u>_</u>.<br>
+                    For example: <code>$my_1stVariable</code>
+                </li>
+                <li>Variables must begin with a <u>letter</u>, <u>$</u> or <u>_</u>.<br>
+                    For example: <code>$name</code>, <code>_name</code> or <code>name</code>
+                </li>
+                <li>Variable names are case <u>sensitive</u>.</li>
+                <li>Variable names should not be JS <u>keywords</u>.</li>
+            </ul>
+        </li>
+    </ol>
+</body>
+</html>
+
+
+
+<!-- Code Semantic Tag Usage Explanation:
+
+The `<code>` tag is used because it is an HTML semantic tag that specifically displays code snippets (like variable names, code lines, etc.).
+
+If you use `<div>` or `<span>`, they are only for styling and have no special meaning to the browser. But the `<code>` tag tells the browser that this is programming code or code-related text, so it displays the text in a monospaced font, and accessibility tools also treat it as code.
+
+**Summary:**  
+- The `<code>` tag represents code (semantic meaning).
+- `<div>` and `<span>` are for general layout/styling, not for code.
+- The `<code>` tag is better for both accessibility and readability. -->

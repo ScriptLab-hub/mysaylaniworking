@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4. Multiplication Table Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 30px auto;
+        }
+        h1 {
+            color: #0056b3;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+        input[type="number"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #tableOutput {
+            margin-top: 25px;
+            border: 1px solid #eee;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            min-height: 50px;
+            color: #000;
+        }
+        #tableOutput p {
+            margin: 5px 0;
+            font-size: 1.1em;
+        }
+        .error-message {
+            color: red;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>4. Multiplication Table Generator</h1>
+
+        <div>
+            <label for="tableNumber">Enter the number for the table:</label>
+            <input type="number" id="tableNumber" value="5" min="1">
+        </div>
+
+        <div>
+            <label for="tableLength">Enter the length of the table (e.g., 10 for up to 5x10):</label>
+            <input type="number" id="tableLength" value="10" min="1">
+        </div>
+
+        <button onclick="generateTable()">Generate Table</button>
+
+        <div id="tableOutput">
+            <p>Enter a number and length above and click "Generate Table".</p>
+        </div>
+    </div>
+
+    <script>
+        function generateTable() {
+            const tableNumberInput = document.getElementById('tableNumber');
+            const tableLengthInput = document.getElementById('tableLength');
+            const tableOutputDiv = document.getElementById('tableOutput');
+
+            const tableNumber = parseInt(tableNumberInput.value);
+            const tableLength = parseInt(tableLengthInput.value);
+
+            if (isNaN(tableNumber) || isNaN(tableLength) || tableNumber < 1 || tableLength < 1) {
+                tableOutputDiv.innerHTML = '<p class="error-message">Please enter valid positive numbers for both fields.</p>';
+                console.error("4. Invalid input for multiplication table.");
+                return;
+            }
+
+            let tableHTML = `<h2>Multiplication Table for ${tableNumber}:</h2>`;
+
+            for (let i = 1; i <= tableLength; i++) {
+                const result = tableNumber * i;
+                tableHTML += `<p>${tableNumber} x ${i} = ${result}</p>`;
+            }
+
+            tableOutputDiv.innerHTML = tableHTML;
+            console.log(`4. Generated table for ${tableNumber} up to ${tableLength}`);
+        }
+
+        document.addEventListener('DOMContentLoaded', generateTable);
+    </script>
+</body>
+</html>

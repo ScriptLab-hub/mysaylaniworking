@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 6: Mixed Array</title>
+    <style>
+        body { font-family: 'Inter', sans-serif; margin: 20px; background-color: #f4f4f4; color: #333; }
+        h1 { color: #0056b3; }
+        pre { background-color: #e9e9e9; padding: 10px; border-radius: 5px; overflow-x: auto; }
+        .output { margin-top: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; background-color: #fff; }
+    </style>
+</head>
+<body>
+    <h1>Question 6: Declare and initialize a mixed array.</h1>
+
+    <pre>
+        <code>
+            let mixedArray = ["apple", 10, true, null, { key: "value" }];
+        </code>
+    </pre>
+
+    <div class="output">
+        <h2>Output:</h2>
+        <p id="outputMessage"></p>
+    </div>
+
+    <script>
+        // Declare and initialize a mixed array
+        let mixedArray = ["apple", 10, true, null, { key: "value" }];
+
+        // Display the array content
+        document.getElementById("outputMessage").textContent = 
+            "The 'mixedArray' has been declared and initialized with mixed data types: " + JSON.stringify(mixedArray);
+
+        console.log("mixedArray:", mixedArray);
+    </script>
+</body>
+</html>

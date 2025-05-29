@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 14: LIFO (Last In, First Out)</title>
+    <style>
+        body { font-family: 'Inter', sans-serif; margin: 20px; background-color: #f4f4f4; color: #333; }
+        h1 { color: #0056b3; }
+        pre { background-color: #e9e9e9; padding: 10px; border-radius: 5px; overflow-x: auto; }
+        .output-section { margin-top: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; background-color: #fff; }
+        .output-item { margin-bottom: 10px; padding: 8px; border-bottom: 1px dashed #eee; }
+        .output-item:last-child { border-bottom: none; }
+        strong { color: #d9534f; }
+    </style>
+</head>
+<body>
+    <h1>Question 14: Create a new array. Store values one by one in such a way that you can access the values in reverse order. (Last In - First Out)</h1>
+    <p>This demonstrates a Stack data structure using JavaScript arrays. Elements are added to the end (`push()`) and removed from the end (`pop()`).</p>
+
+    <pre>
+        <code>
+            let lifoArray = []; // Our LIFO stack
+
+            // Adding elements (push)
+            lifoArray.push("Book 1");
+            lifoArray.push("Book 2");
+            lifoArray.push("Book 3");
+
+            // Accessing/Removing elements (pop)
+            let lastInElement = lifoArray.pop(); // Removes "Book 3"
+            let secondLastInElement = lifoArray.pop(); // Removes "Book 2"
+        </code>
+    </pre>
+
+    <div class="output-section">
+        <h2>LIFO Operations:</h2>
+        <div id="lifoOutput"></div>
+    </div>
+
+    <script>
+        let lifoArray = []; // Our LIFO stack
+        const lifoOutputDiv = document.getElementById("lifoOutput");
+
+        function displayLifoState(message, removedItem = null) {
+            const p = document.createElement("p");
+            p.className = "output-item";
+            let content = `<strong>${message}</strong>: Array state: [${lifoArray.join(", ")}]`;
+            if (removedItem !== null) {
+                content += ` (Removed: '${removedItem}')`;
+            }
+            p.innerHTML = content;
+            lifoOutputDiv.appendChild(p);
+            console.log(message, lifoArray, removedItem ? `(Removed: ${removedItem})` : '');
+        }
+
+        // 1. Initial state
+        displayLifoState("Initial empty array");
+
+        // 2. Adding elements (push) - like putting plates on a stack
+        lifoArray.push("Plate A");
+        displayLifoState("After adding 'Plate A'");
+
+        lifoArray.push("Plate B");
+        displayLifoState("After adding 'Plate B'");
+
+        lifoArray.push("Plate C");
+        displayLifoState("After adding 'Plate C'");
+
+        // 3. Accessing/Removing elements (pop) - like taking plates off the top
+        let topPlate1 = lifoArray.pop(); // Last In, First Out: "Plate C"
+        displayLifoState("After taking off the top plate", topPlate1);
+
+        let topPlate2 = lifoArray.pop(); // Next Last In, Next First Out: "Plate B"
+        displayLifoState("After taking off the next plate", topPlate2);
+
+        // Add another item to show continuous operation
+        lifoArray.push("Plate D");
+        displayLifoState("After adding 'Plate D'");
+
+        let topPlate3 = lifoArray.pop(); // "Plate D"
+        displayLifoState("After taking off the next plate", topPlate3);
+
+        let topPlate4 = lifoArray.pop(); // "Plate A"
+        displayLifoState("After taking off the last plate", topPlate4);
+
+        // Attempt to remove from an empty stack
+        let topPlateEmpty = lifoArray.pop(); // undefined
+        displayLifoState("Attempting to remove from an empty array", topPlateEmpty);
+    </script>
+</body>
+</html>

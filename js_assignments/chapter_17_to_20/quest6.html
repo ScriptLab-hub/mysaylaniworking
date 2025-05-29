@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6. Series Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f2f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 30px auto;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #34495e;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 10px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        .series-output {
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 1.1em;
+            color: #2c3e50;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>6. Number Series Generator</h1>
+        <p>This page demonstrates various number series generated using JavaScript loops.</p>
+
+        <h2>a. Counting: 1 to 15</h2>
+        <div id="countingOutput" class="series-output"></div>
+
+        <h2>b. Reverse Counting: 10 to 1</h2>
+        <div id="reverseCountingOutput" class="series-output"></div>
+
+        <h2>c. Even Numbers: 0 to 20</h2>
+        <div id="evenOutput" class="series-output"></div>
+
+        <h2>d. Odd Numbers: 1 to 19</h2>
+        <div id="oddOutput" class="series-output"></div>
+
+        <h2>e. Series: 2k to 20k</h2>
+        <div id="seriesKOutput" class="series-output"></div>
+    </div>
+
+    <script>
+        function generateSeries() {
+            // --- a. Counting: 1 to 15 ---
+            const countingOutputDiv = document.getElementById('countingOutput');
+            let countingNumbers = [];
+            for (let i = 1; i <= 15; i++) {
+                countingNumbers.push(i);
+            }
+            countingOutputDiv.textContent = countingNumbers.join(', ');
+            console.log("6a. Counting:", countingNumbers.join(', '));
+
+            // --- b. Reverse Counting: 10 to 1 ---
+            const reverseCountingOutputDiv = document.getElementById('reverseCountingOutput');
+            let reverseNumbers = [];
+            for (let i = 10; i >= 1; i--) {
+                reverseNumbers.push(i);
+            }
+            reverseCountingOutputDiv.textContent = reverseNumbers.join(', ');
+            console.log("6b. Reverse Counting:", reverseNumbers.join(', '));
+
+            // --- c. Even Numbers: 0 to 20 ---
+            const evenOutputDiv = document.getElementById('evenOutput');
+            let evenNumbers = [];
+            for (let i = 0; i <= 20; i += 2) {
+                evenNumbers.push(i);
+            }
+            evenOutputDiv.textContent = evenNumbers.join(', ');
+            console.log("6c. Even Numbers:", evenNumbers.join(', '));
+
+            // --- d. Odd Numbers: 1 to 19 ---
+            const oddOutputDiv = document.getElementById('oddOutput');
+            let oddNumbers = [];
+            for (let i = 1; i <= 19; i += 2) {
+                oddNumbers.push(i);
+            }
+            oddOutputDiv.textContent = oddNumbers.join(', ');
+            console.log("6d. Odd Numbers:", oddNumbers.join(', '));
+
+            // --- e. Series: 2k, 4k, ..., 20k ---
+            const seriesKOutputDiv = document.getElementById('seriesKOutput');
+            let seriesKNumbers = [];
+            for (let i = 2; i <= 20; i += 2) {
+                seriesKNumbers.push(i + 'k');
+            }
+            seriesKOutputDiv.textContent = seriesKNumbers.join(', ');
+            console.log("6e. Series 'k':", seriesKNumbers.join(', '));
+        }
+
+        document.addEventListener('DOMContentLoaded', generateSeries);
+    </script>
+</body>
+</html>

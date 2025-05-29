@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 11: Copy City Names</title>
+    <style>
+        body { font-family: 'Inter', sans-serif; margin: 20px; background-color: #f4f4f4; color: #333; }
+        h1 { color: #0056b3; }
+        pre { background-color: #e9e9e9; padding: 10px; border-radius: 5px; overflow-x: auto; }
+        .output { margin-top: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; background-color: #fff; }
+        strong { color: #d9534f; }
+    </style>
+</head>
+<body>
+    <h1>Question 11: Write a program to initialize an array with city names. Copy 3 array elements from cities array to selectedCities array.</h1>
+
+    <pre>
+        <code>
+            let cities = ["Karachi", "Lahore", "Islamabad", "Quetta", "Peshawar", "Faisalabad"];
+
+            // Copy 3 elements to selectedCities array using slice()
+            let selectedCities = cities.slice(0, 3);
+        </code>
+    </pre>
+
+    <div class="output">
+        <h2>Output:</h2>
+        <p id="originalCities"></p>
+        <p id="selectedCities"></p>
+    </div>
+
+    <script>
+        let cities = ["Karachi", "Lahore", "Islamabad", "Quetta", "Peshawar", "Faisalabad"];
+
+        // Display original cities array
+        document.getElementById("originalCities").innerHTML = 
+            "Original cities array: <strong>[" + cities.join(", ") + "]</strong>";
+        console.log("Original cities array:", cities);
+
+        // Copy 3 elements to selectedCities array using slice()
+        // slice(startIndex, endIndex) copies elements from startIndex up to (but not including) endIndex.
+        let selectedCities = cities.slice(0, 3); 
+
+        // Display selectedCities array
+        document.getElementById("selectedCities").innerHTML = 
+            "Selected cities array (first 3): <strong>[" + selectedCities.join(", ") + "]</strong>";
+        console.log("Selected cities array:", selectedCities);
+    </script>
+</body>
+</html>

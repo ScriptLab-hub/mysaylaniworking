@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 5: Boolean Array</title>
+    <style>
+        body { font-family: 'Inter', sans-serif; margin: 20px; background-color: #f4f4f4; color: #333; }
+        h1 { color: #0056b3; }
+        pre { background-color: #e9e9e9; padding: 10px; border-radius: 5px; overflow-x: auto; }
+        .output { margin-top: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; background-color: #fff; }
+    </style>
+</head>
+<body>
+    <h1>Question 5: Declare and initialize a boolean array.</h1>
+
+    <pre>
+        <code>
+            let statusFlags = [true, false, true, true];
+        </code>
+    </pre>
+
+    <div class="output">
+        <h2>Output:</h2>
+        <p id="outputMessage"></p>
+    </div>
+
+    <script>
+        // Declare and initialize a boolean array
+        let statusFlags = [true, false, true, true];
+
+        // Display the array content
+        document.getElementById("outputMessage").textContent = 
+            "The 'statusFlags' array has been declared and initialized with boolean values: " + JSON.stringify(statusFlags);
+
+        console.log("statusFlags array:", statusFlags);
+    </script>
+</body>
+</html>

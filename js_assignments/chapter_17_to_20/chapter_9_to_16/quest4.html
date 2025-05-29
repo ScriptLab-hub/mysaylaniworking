@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 4: Numbers Array</title>
+    <style>
+        body { font-family: 'Inter', sans-serif; margin: 20px; background-color: #f4f4f4; color: #333; }
+        h1 { color: #0056b3; }
+        pre { background-color: #e9e9e9; padding: 10px; border-radius: 5px; overflow-x: auto; }
+        .output { margin-top: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; background-color: #fff; }
+    </style>
+</head>
+<body>
+    <h1>Question 4: Declare and initialize a numbers array.</h1>
+
+    <pre>
+        <code>
+            let ages = [25, 30, 22, 45];
+        </code>
+    </pre>
+
+    <div class="output">
+        <h2>Output:</h2>
+        <p id="outputMessage"></p>
+    </div>
+
+    <script>
+        // Declare and initialize a numbers array
+        let ages = [25, 30, 22, 45];
+
+        // Display the array content
+        document.getElementById("outputMessage").textContent = 
+            "The 'ages' array has been declared and initialized with number values: " + JSON.stringify(ages);
+
+        console.log("ages array:", ages);
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 7: Education Qualifications</title>
+    <style>
+        body { font-family: 'Inter', sans-serif; margin: 20px; background-color: #f4f4f4; color: #333; }
+        h1 { color: #0056b3; }
+        pre { background-color: #e9e9e9; padding: 10px; border-radius: 5px; overflow-x: auto; }
+        .output { margin-top: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; background-color: #fff; }
+        ul { list-style-type: decimal; padding-left: 20px; }
+        li { margin-bottom: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Question 7: Declare and Initialize an array and store available education qualifications in Pakistan (e.g. SSC, HSC, BCS, BS, BCOM, MS, M. Phil., PhD). Show the listed qualifications in your browser.</h1>
+
+    <pre>
+        <code>
+            let qualifications = ["SSC", "HSC", "BCS", "BS", "BCOM", "MS", "M. Phil.", "PhD"];
+
+            // To show this in the browser, we will dynamically create list items.
+            // (See the script section below)
+        </code>
+    </pre>
+
+    <div class="output">
+        <h2>Available Education Qualifications in Pakistan:</h2>
+        <ul id="qualificationList"></ul>
+    </div>
+
+    <script>
+        // Declare and initialize the array with qualifications
+        let qualifications = ["SSC", "HSC", "BCS", "BS", "BCOM", "MS", "M. Phil.", "PhD"];
+
+        // Get the unordered list element from the HTML
+        let ul = document.getElementById("qualificationList");
+
+        // Loop through the array and create a list item for each qualification
+        for (let i = 0; i < qualifications.length; i++) {
+            let li = document.createElement("li"); // Create a new list item element
+            li.textContent = qualifications[i];    // Set the text content of the list item
+            ul.appendChild(li);                    // Add the list item to the unordered list
+        }
+
+        console.log("Qualifications array:", qualifications);
+    </script>
+</body>
+</html>

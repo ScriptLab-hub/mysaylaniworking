@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Programs</title>
+</head>
+<body>
+    <script>
+        // 1. Check if input is a number, uppercase letter, or lowercase letter
+        let char = prompt("Enter a character:");
+        let charCode = char.charCodeAt(0);
+
+        if (!isNaN(char)) {
+            alert("Input is a number.");
+        } else if (charCode >= 65 && charCode <= 90) {
+            alert("Input is an uppercase letter.");
+        } else if (charCode >= 97 && charCode <= 122) {
+            alert("Input is a lowercase letter.");
+        } else {
+            alert("Input is neither a number nor an English letter.");
+        }
+
+        // 2. Find the larger of two integers or if they're equal
+        let num1 = parseInt(prompt("Enter first integer:"));
+        let num2 = parseInt(prompt("Enter second integer:"));
+
+        if (num1 > num2) {
+            alert(num1 + " is larger.");
+        } else if (num1 < num2) {
+            alert(num2 + " is larger.");
+        } else {
+            alert("Both numbers are equal.");
+        }
+
+        // 3. Check if a number is positive, negative, or zero
+        let number = parseFloat(prompt("Enter a number:"));
+
+        if (number > 0) {
+            alert("The number is positive.");
+        } else if (number < 0) {
+            alert("The number is negative.");
+        } else {
+            alert("The number is zero.");
+        }
+
+        // 4. Check if a character is a vowel
+        let inputChar = prompt("Enter a single character:").toLowerCase();
+        let vowels = ["a", "e", "i", "o", "u"];
+
+        if (vowels.includes(inputChar)) {
+            alert("True - It's a vowel.");
+        } else {
+            alert("False - It's not a vowel.");
+        }
+
+        // 5. Password validation
+        let correctPassword = "mypassword"; // Change this to your correct password
+        let userPassword = prompt("Enter your password:");
+
+        if (!userPassword) {
+            alert("Please enter your password.");
+        } else if (userPassword === correctPassword) {
+            alert("Correct! The password you entered matches the original password.");
+        } else {
+            alert("Incorrect password.");
+        }
+    </script>
+</body>
+</html>

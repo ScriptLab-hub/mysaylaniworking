@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 15: Phone Manufacturers Dropdown</title>
+    <style>
+        body { font-family: 'Inter', sans-serif; margin: 20px; background-color: #f4f4f4; color: #333; }
+        h1 { color: #0056b3; }
+        pre { background-color: #e9e9e9; padding: 10px; border-radius: 5px; overflow-x: auto; }
+        .output { margin-top: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; background-color: #fff; }
+        select {
+            padding: 8px 12px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        select:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 3px rgba(0,123,255,0.25);
+        }
+    </style>
+</head>
+<body>
+    <h1>Question 15: Write a program to store phone manufacturers (Apple, Samsung, Motorola, Nokia, Sony & Haier) in an array. Display the following dropdown/select menu in your browser using `document.write()` method:</h1>
+
+    <pre>
+        <code>
+            let manufacturers = ["Apple", "Samsung", "Motorola", "Nokia", "Sony", "Haier"];
+
+            // Using document.write to generate the HTML for the dropdown
+            document.write("<h2>Select a Phone Manufacturer:</h2>");
+            document.write("<select>");
+            for (let i = 0; i < manufacturers.length; i++) {
+                document.write("<option>" + manufacturers[i] + "</option>");
+            }
+            document.write("</select>");
+        </code>
+    </pre>
+
+    <div class="output">
+        <h2>Output (Dropdown will appear below):</h2>
+        </div>
+
+    <script>
+        let manufacturers = ["Apple", "Samsung", "Motorola", "Nokia", "Sony", "Haier"];
+
+        // Using document.write to generate the HTML for the dropdown directly into the document.
+        // Note: document.write() can overwrite existing content if called after the page has loaded.
+        // For dynamic content after page load, DOM manipulation (like in Q7) is preferred.
+        document.write("<h2>Select a Phone Manufacturer:</h2>");
+        document.write("<select>"); // Start of the select dropdown element
+
+        // Loop through the manufacturers array
+        for (let i = 0; i < manufacturers.length; i++) {
+            // For each manufacturer, create an <option> tag
+            document.write("<option>" + manufacturers[i] + "</option>");
+        }
+
+        document.write("</select>"); // End of the select dropdown element
+
+        console.log("Manufacturers array:", manufacturers);
+        console.log("Dropdown menu generated using document.write().");
+    </script>
+</body>
+</html>

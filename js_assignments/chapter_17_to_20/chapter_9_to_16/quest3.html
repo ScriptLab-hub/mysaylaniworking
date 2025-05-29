@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 3: Strings Array</title>
+    <style>
+        body { font-family: 'Inter', sans-serif; margin: 20px; background-color: #f4f4f4; color: #333; }
+        h1 { color: #0056b3; }
+        pre { background-color: #e9e9e9; padding: 10px; border-radius: 5px; overflow-x: auto; }
+        .output { margin-top: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; background-color: #fff; }
+    </style>
+</head>
+<body>
+    <h1>Question 3: Declare and initialize a strings array.</h1>
+
+    <pre>
+        <code>
+            let colors = ["red", "green", "blue", "yellow"];
+        </code>
+    </pre>
+
+    <div class="output">
+        <h2>Output:</h2>
+        <p id="outputMessage"></p>
+    </div>
+
+    <script>
+        // Declare and initialize a strings array
+        let colors = ["red", "green", "blue", "yellow"];
+
+        // Display the array content
+        document.getElementById("outputMessage").textContent = 
+            "The 'colors' array has been declared and initialized with string values: " + JSON.stringify(colors);
+
+        console.log("colors array:", colors);
+    </script>
+</body>
+</html>

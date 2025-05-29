@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2. Initialize a Matrix</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 30px auto;
+        }
+        h1 {
+            color: #0056b3;
+            text-align: center;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 25px;
+        }
+        .matrix-display {
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.2em;
+            color: #2c3e50;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+        table {
+            border-collapse: collapse;
+            width: auto;
+            margin: 15px auto;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+            font-size: 1.1em;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>2. Matrix Declaration and Initialization</h1>
+        <p>The matrix `0123, 1012, 2101` has been declared and initialized as a multidimensional array in JavaScript.</p>
+
+        <h2>Raw JSON Representation:</h2>
+        <div id="jsonOutput" class="matrix-display"></div>
+
+        <h2>Matrix as an HTML Table:</h2>
+        <div id="tableOutput"></div>
+    </div>
+
+    <script>
+        // Declare and initialize a multidimensional array (array of arrays)
+        const matrix = [
+            [0, 1, 2, 3],
+            [1, 0, 1, 2],
+            [2, 1, 0, 1]
+        ];
+
+        // Display the matrix as raw JSON
+        const jsonOutputElement = document.getElementById('jsonOutput');
+        jsonOutputElement.textContent = JSON.stringify(matrix, null, 2);
+
+        // Display the matrix as an HTML Table
+        const tableOutputElement = document.getElementById('tableOutput');
+        let tableHTML = '<table>';
+
+        // Optional: Table header
+        tableHTML += '<thead><tr><th></th>'; // Empty cell for row headers
+        for (let j = 0; j < matrix[0].length; j++) {
+            tableHTML += `<th>Col ${j}</th>`;
+        }
+        tableHTML += '</tr></thead>';
+
+        tableHTML += '<tbody>';
+        for (let i = 0; i < matrix.length; i++) {
+            tableHTML += `<tr><th>Row ${i}</th>`; // Row header
+            for (let j = 0; j < matrix[i].length; j++) {
+                tableHTML += `<td>${matrix[i][j]}</td>`;
+            }
+            tableHTML += '</tr>';
+        }
+        tableHTML += '</tbody>';
+        tableHTML += '</table>';
+        tableOutputElement.innerHTML = tableHTML;
+
+        // Console Log for verification
+        console.log("2. Initialized Matrix:");
+        console.log(matrix);
+    </script>
+</body>
+</html>

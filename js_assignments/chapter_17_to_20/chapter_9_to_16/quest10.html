@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 10: Sort Student Scores</title>
+    <style>
+        body { font-family: 'Inter', sans-serif; margin: 20px; background-color: #f4f4f4; color: #333; }
+        h1 { color: #0056b3; }
+        pre { background-color: #e9e9e9; padding: 10px; border-radius: 5px; overflow-x: auto; }
+        .output { margin-top: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; background-color: #fff; }
+        strong { color: #d9534f; }
+    </style>
+</head>
+<body>
+    <h1>Question 10: Write a program to store student scores in an array & sort the array in ascending order using Array’s sort method.</h1>
+
+    <pre>
+        <code>
+            let studentScores = [85, 72, 91, 65, 78, 95, 80];
+
+            // Sort the array in ascending order using a compare function
+            studentScores.sort(function(a, b) {
+                return a - b; // For ascending order of numbers
+            });
+        </code>
+    </pre>
+
+    <div class="output">
+        <h2>Output:</h2>
+        <p id="originalScores"></p>
+        <p id="sortedScores"></p>
+    </div>
+
+    <script>
+        let studentScores = [85, 72, 91, 65, 78, 95, 80];
+
+        // Display original array
+        document.getElementById("originalScores").innerHTML = 
+            "Original student scores: <strong>[" + studentScores.join(", ") + "]</strong>";
+        console.log("Original student scores:", studentScores);
+
+        // Create a copy to show the original state before sorting
+        let originalScoresCopy = [...studentScores]; 
+
+        // Sort the array in ascending order using Array's sort method with a compare function
+        studentScores.sort(function(a, b) {
+            return a - b; // This function ensures numeric sorting in ascending order
+        });
+
+        // Display sorted array
+        document.getElementById("sortedScores").innerHTML = 
+            "Student scores in ascending order: <strong>[" + studentScores.join(", ") + "]</strong>";
+        console.log("Student scores in ascending order:", studentScores);
+    </script>
+</body>
+</html>

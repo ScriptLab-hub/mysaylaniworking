@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7. Array Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 40px auto;
+        }
+        h1 {
+            color: #0056b3;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+        input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #searchResult {
+            margin-top: 25px;
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-align: center;
+            min-height: 20px;
+        }
+        .found {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .not-found {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .array-display {
+            background-color: #e9ecef;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: 'Courier New', Courier, monospace;
+            margin-top: 20px;
+            font-size: 0.95em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>7. Bakery Item Search</h1>
+        <p>Our bakery offers: <span id="bakeryItemsDisplay" class="array-display"></span></p>
+
+        <label for="searchInput">What do you want to order?</label>
+        <input type="text" id="searchInput" placeholder="e.g., cake">
+
+        <button onclick="searchItem()">Search</button>
+
+        <div id="searchResult"></div>
+    </div>
+
+    <script>
+        const A = ["cake", "apple pie", "cookie", "chips", "patties"];
+        document.getElementById('bakeryItemsDisplay').textContent = `[${A.map(item => `"${item}"`).join(', ')}]`;
+
+        function searchItem() {
+            const userInput = document.getElementById('searchInput').value.toLowerCase();
+            const searchResultDiv = document.getElementById('searchResult');
+
+            let found = false;
+            let foundIndex = -1;
+
+            for (let i = 0; i < A.length; i++) {
+                if (A[i].toLowerCase() === userInput) {
+                    found = true;
+                    foundIndex = i;
+                    break;
+                }
+            }
+
+            if (found) {
+                searchResultDiv.textContent = `Yes, "${userInput}" is found at index ${foundIndex} in our list.`;
+                searchResultDiv.className = 'found';
+                console.log(`7. "${userInput}" found at index ${foundIndex}.`);
+            } else {
+                searchResultDiv.textContent = `No, "${userInput}" is NOT found in our list.`;
+                searchResultDiv.className = 'not-found';
+                console.log(`7. "${userInput}" not found.`);
+            }
+        }
+    </script>
+</body>
+</html>

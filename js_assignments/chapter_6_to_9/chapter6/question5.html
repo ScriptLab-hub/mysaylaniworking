@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subject Marks Entry</title>
+    <style>
+        /* Very basic styling for a beginner look */
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #f0f0f0; /* Light gray background */
+            color: #333;
+        }
+        .container {
+            width: 350px; /* Slightly wider for labels */
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+            border-radius: 5px;
+        }
+        div {
+            margin-bottom: 10px; /* Space between input groups */
+            text-align: left; /* Align labels and inputs */
+        }
+        label {
+            display: block; /* Make labels appear on their own line */
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="number"] {
+            width: calc(100% - 16px); /* Account for padding and border */
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #007bff; /* Blue button */
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 3px;
+            margin-top: 15px; /* Space above button */
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #outputArea {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #eee;
+            background-color: #f9f9f9;
+            text-align: left;
+            min-height: 120px; /* Give it some space */
+            white-space: pre-wrap; /* Preserve newlines */
+            border-radius: 3px;
+        }
+        .error-message {
+            color: red;
+            font-weight: bold;
+        }
+        .total-marks {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #007bff;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Subject & Marks Entry</h1>
+        <p>Please enter the details below:</p>
+
+        <div>
+            <label for="subject1Name">Subject 1 Name:</label>
+            <input type="text" id="subject1Name" placeholder="e.g., Math">
+        </div>
+
+        <div>
+            <label for="obtainedMarksSub1">Obtained Marks for Subject 1:</label>
+            <input type="number" id="obtainedMarksSub1" placeholder="e.g., 85">
+        </div>
+
+        <div>
+            <label for="subject2Name">Subject 2 Name:</label>
+            <input type="text" id="subject2Name" placeholder="e.g., Science">
+        </div>
+
+        <div>
+            <label for="obtainedMarksSub2">Obtained Marks for Subject 2:</label>
+            <input type="number" id="obtainedMarksSub2" placeholder="e.g., 78">
+        </div>
+
+        <div>
+            <label for="subject3Name">Subject 3 Name:</label>
+            <input type="text" id="subject3Name" placeholder="e.g., English">
+        </div>
+
+        <div>
+            <label for="obtainedMarksSub3">Obtained Marks for Subject 3:</label>
+            <input type="number" id="obtainedMarksSub3" placeholder="e.g., 92">
+        </div>
+
+        <button id="processButton">
+            Process Details
+        </button>
+
+        <div id="outputArea">
+            <p>Your entered subject and marks details will be shown here.</p>
+        </div>
+    </div>
+
+    <script>
+        // Get references to the HTML elements
+        const subject1NameInput = document.getElementById('subject1Name');
+        const subject2NameInput = document.getElementById('subject2Name');
+        const subject3NameInput = document.getElementById('subject3Name');
+
+        const obtainedMarksSub1Input = document.getElementById('obtainedMarksSub1');
+        const obtainedMarksSub2Input = document.getElementById('obtainedMarksSub2');
+        const obtainedMarksSub3Input = document.getElementById('obtainedMarksSub3');
+
+        const processButton = document.getElementById('processButton');
+        const outputArea = document.getElementById('outputArea');
+
+        // Add an event listener to the process button
+        processButton.addEventListener('click', () => {
+            // a) Take three subjects name from user and store them in 3 different variables.
+            let subjectName1 = subject1NameInput.value.trim();
+            let subjectName2 = subject2NameInput.value.trim();
+            let subjectName3 = subject3NameInput.value.trim();
+
+            // b) Total marks for each subject is 100, store it in another variable.
+            const totalMarksPerSubject = 100; // This variable stores the fixed total marks
+
+            // c) Take obtained marks for each subject from user and store them in different variables.
+            // Use 0 if the input is not a valid number, so it doesn't break the total calculation.
+            let obtainedMarksForSubject1 = parseInt(obtainedMarksSub1Input.value) || 0;
+            let obtainedMarksForSubject2 = parseInt(obtainedMarksSub2Input.value) || 0;
+            let obtainedMarksForSubject3 = parseInt(obtainedMarksSub3Input.value) || 0;
+
+            // Calculate the total obtained marks
+            const totalObtainedMarks = obtainedMarksForSubject1 + obtainedMarksForSubject2 + obtainedMarksForSubject3;
+
+            // Prepare the output content
+            let outputContent = `<h3>Entered Details:</h3>`;
+
+            // Display subject names and their obtained marks
+            outputContent += `<p>Subject 1: <strong>${subjectName1 || 'Not entered'}</strong></p>`;
+            if (isNaN(parseInt(obtainedMarksSub1Input.value))) { // Check original input for error message
+                outputContent += `<p class="error-message">Obtained Marks for ${subjectName1 || 'Subject 1'}: Invalid or not entered.</p>`;
+            } else {
+                outputContent += `<p>Obtained Marks for ${subjectName1 || 'Subject 1'}: <strong>${obtainedMarksForSubject1}</strong></p>`;
+            }
+
+
+            outputContent += `<p>Subject 2: <strong>${subjectName2 || 'Not entered'}</strong></p>`;
+            if (isNaN(parseInt(obtainedMarksSub2Input.value))) {
+                outputContent += `<p class="error-message">Obtained Marks for ${subject2Name || 'Subject 2'}: Invalid or not entered.</p>`;
+            } else {
+                outputContent += `<p>Obtained Marks for ${subject2Name || 'Subject 2'}: <strong>${obtainedMarksForSubject2}</strong></p>`;
+            }
+
+            outputContent += `<p>Subject 3: <strong>${subjectName3 || 'Not entered'}</strong></p>`;
+            if (isNaN(parseInt(obtainedMarksSub3Input.value))) {
+                outputContent += `<p class="error-message">Obtained Marks for ${subject3Name || 'Subject 3'}: Invalid or not entered.</p>`;
+            } else {
+                outputContent += `<p>Obtained Marks for ${subject3Name || 'Subject 3'}: <strong>${obtainedMarksForSubject3}</strong></p>`;
+            }
+
+            // Display total marks per subject (this remains constant)
+            outputContent += `<p>Total Marks per Subject (each): <strong>${totalMarksPerSubject}</strong></p>`;
+
+            // Display the calculated total obtained marks
+            outputContent += `<p class="total-marks">Total Obtained Marks: <strong>${totalObtainedMarks}</strong></p>`;
+
+
+            // Update the output area with the collected information
+            outputArea.innerHTML = outputContent;
+        });
+    </script>
+</body>
+</html>

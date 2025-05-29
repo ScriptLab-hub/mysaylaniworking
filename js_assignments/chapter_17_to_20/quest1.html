@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1. Empty Multidimensional Array</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+        .container {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 30px auto;
+        }
+        h1 {
+            color: #0056b3;
+            text-align: center;
+        }
+        pre {
+            background-color: #e9ecef;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.1em;
+            color: #495057;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>1. Declare and Initialize an Empty Multidimensional Array</h1>
+        <p>An empty multidimensional array (array of arrays) has been declared in the JavaScript code.</p>
+        <p>Its string representation is:</p>
+        <pre id="output"></pre>
+        <p>Check the browser's console (F12) for more details.</p>
+    </div>
+
+    <script>
+        // Declare and initialize an empty multidimensional array (array of arrays)
+        let multidimensionalArray = [];
+
+        // Display the array on the HTML page
+        document.getElementById('output').textContent = JSON.stringify(multidimensionalArray);
+
+        // Verify in the console
+        console.log("1. Empty Multidimensional Array:");
+        console.log("Array:", multidimensionalArray);
+        console.log("Type of array:", typeof multidimensionalArray);
+        console.log("Length of array (number of rows):", multidimensionalArray.length);
+    </script>
+</body>
+</html>

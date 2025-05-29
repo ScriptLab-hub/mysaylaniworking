@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10. Multiples of 5</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            max-width: 700px;
+            margin: 40px auto;
+        }
+        h1 {
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        p {
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+        .multiples-output {
+            background-color: #eaf6ff;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #cce5ff;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 1.2em;
+            color: #004085;
+            word-wrap: break-word;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>10. Multiples of 5 (1 to 100)</h1>
+        <p>Below are all the numbers between 1 and 100 that are multiples of 5:</p>
+
+        <div id="multiplesOutput" class="multiples-output">
+            Loading multiples...
+        </div>
+    </div>
+
+    <script>
+        const multiplesOutputDiv = document.getElementById('multiplesOutput');
+        let multiplesOf5 = [];
+
+        for (let i = 1; i <= 100; i++) {
+            if (i % 5 === 0) {
+                multiplesOf5.push(i);
+            }
+        }
+
+        multiplesOutputDiv.textContent = multiplesOf5.join(', ');
+        console.log("10. Multiples of 5 from 1 to 100:");
+        console.log(multiplesOf5.join(', '));
+    </script>
+</body>
+</html>

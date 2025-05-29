@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade Calculator</title>
+</head>
+<body>
+    <script>
+        let subject1 = parseFloat(prompt("Enter marks for subject 1:"));
+        let subject2 = parseFloat(prompt("Enter marks for subject 2:"));
+        let subject3 = parseFloat(prompt("Enter marks for subject 3:"));
+        let totalMarks = parseFloat(prompt("Enter total marks:"));
+
+        let obtainedMarks = subject1 + subject2 + subject3;
+        let percentage = (obtainedMarks / totalMarks) * 100;
+        let grade = "";
+        let remarks = "";
+
+        if (percentage >= 80) {
+            grade = "A+";
+            remarks = "Excellent!";
+        } else if (percentage >= 70) {
+            grade = "A";
+            remarks = "Good Job!";
+        } else if (percentage >= 60) {
+            grade = "B";
+            remarks = "Satisfactory";
+        } else if (percentage >= 50) {
+            grade = "C";
+            remarks = "Needs Improvement";
+        } else {
+            grade = "F";
+            remarks = "Failed";
+        }
+
+        alert(`Total Marks: ${totalMarks}\nMarks Obtained: ${obtainedMarks}\nPercentage: ${percentage.toFixed(2)}%\nGrade: ${grade}\nRemarks: ${remarks}`);
+    </script>
+</body>
+</html>

@@ -1,13 +1,12 @@
 // Step 1: Ask for the user's birth year
 var birthYear = prompt("Enter your birth year:");
-
-// Step 2: Convert it to a number
+
 birthYear = Number(birthYear);
 
-// Step 3: Get the current year
+
 var currentYear = new Date().getFullYear();
 
-// Step 4: Calculate the age
+
 var age = currentYear - birthYear;
 
 alert("You are " + age + " years old!");

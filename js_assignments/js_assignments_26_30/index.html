@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+// Positive Integer: round, floor, ceil
+
+let num = +prompt("Enter a positive integer:");
+
+document.write("Number: " + num + "<br>");
+document.write("Round off: " + Math.round(num) + "<br>");
+document.write("Floor: " + Math.floor(num) + "<br>");
+document.write("Ceil: " + Math.ceil(num));
+
+// Negative Floating Number: round, floor, ceil
+
+let negNum = +prompt("Enter a negative floating point number:");
+
+document.write("Number: " + negNum + "<br>");
+document.write("Round off: " + Math.round(negNum) + "<br>");
+document.write("Floor: " + Math.floor(negNum) + "<br>");
+document.write("Ceil: " + Math.ceil(negNum));
+
+
+// Absolute Value
+
+let value = +prompt("Enter any number to find absolute value:");
+let absValue = Math.abs(value);
+
+document.write("The absolute value of " + value + " is " + absValue);
+
+// Dice Simulation
+
+let dice = Math.floor(Math.random() * 6) + 1;
+document.write("You rolled a dice: " + dice);
+
+// Coin Toss Simulation
+
+let coin = Math.random() < 0.5 ? "Heads" : "Tails";
+document.write("Coin toss result: " + coin);
+
+// Random number between 1 and 100
+
+let randomNum = Math.floor(Math.random() * 100) + 1;
+document.write("Random number between 1 and 100: " + randomNum);
+
+// Parse weight input
+
+let weight = prompt("Enter your weight (e.g., 50kgs or 50.2kilograms):");
+let parsedWeight = parseFloat(weight);
+
+document.write("Your weight is: " + parsedWeight + " kilograms");
+
+// Secret number guessing game (1 to 10)
+
+let secret = Math.floor(Math.random() * 10) + 1;
+let guess = +prompt("Guess the secret number (1 to 10):");
+
+if (guess === secret) {
+    alert("Congratulations! You guessed the correct number!");
+} else {
+    alert("Try again! The secret number was " + secret);
+}
+
+
+
+
+    </script>
+</body>
+</html>

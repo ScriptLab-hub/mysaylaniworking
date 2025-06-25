@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+// Show current date and time
+
+let now = new Date();
+document.write("Current Date & Time: " + now);
+
+// Alert current month in words
+
+let months = ["January", "February", "March", "April", "May", "June",
+              "July", "August", "September", "October", "November", "December"];
+let currentMonth = new Date().getMonth();
+alert("Current month: " + months[currentMonth]);
+
+// Alert first 3 letters of current day
+
+let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+let today = new Date().getDay();
+alert("Today is: " + days[today]);
+
+// Show “It’s Fun day” if weekend
+
+let day = new Date().getDay();
+if (day === 0 || day === 6) {
+    alert("It’s Fun day");
+}
+
+// First 15 or Last days of month
+
+let date = new Date().getDate();
+if (date < 16) {
+    document.write("First fifteen days of the month");
+} else {
+    document.write("Last days of the month");
+}
+
+// Minutes since Jan 1, 1970
+
+let now1 = new Date();
+let minutesSince1970 = now1.getTime() / (1000 * 60);
+document.write("Minutes since Jan 1, 1970: " + Math.floor(minutesSince1970));
+
+// AM or PM
+
+let hour = new Date().getHours();
+if (hour < 12) {
+    alert("It's AM");
+} else {
+    alert("It's PM");
+}
+
+// Date object for Dec 31, 2020
+let laterDate = new Date("December 31, 2020");
+document.write("Later Date: " + laterDate);
+
+
+// Days since 1st Ramadan (June 18, 2015)
+
+let ramadanStart = new Date("June 18, 2015");
+let today1 = new Date();
+let diffTime = today1 - ramadanStart;
+let diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+alert(diffDays + " days have passed since 1st Ramadan, 2015");
+
+// Seconds since beginning of 2015
+let refDate = new Date();
+let start2015 = new Date("January 1, 2015");
+let seconds = Math.floor((refDate - start2015) / 1000);
+document.write("Seconds since beginning of 2015: " + seconds);
+
+// Add 1 hour to current date and show
+
+let current = new Date();
+document.write("Current Date: " + current + "<br>");
+current.setHours(current.getHours() + 1);
+document.write("1 Hour Ahead: " + current);
+
+
+// Show date 100 years back
+
+let currentDate = new Date();
+let oldDate = new Date();
+oldDate.setFullYear(currentDate.getFullYear() - 100);
+alert("100 years back, the date was: " + oldDate);
+
+// Ask age and show birth year
+
+let age = +prompt("Enter your age:");
+let currentYear = new Date().getFullYear();
+let birthYear = currentYear - age;
+document.write("Your birth year is: " + birthYear);
+
+
+//  Generate K-Electric Bill
+
+let customerName = prompt("Enter your name:");
+let monthNames = ["January", "February", "March", "April", "May", "June",
+                  "July", "August", "September", "October", "November", "December"];
+let currentMonth1 = monthNames[new Date().getMonth()];
+let units = +prompt("Enter number of units:");
+let chargePerUnit = +prompt("Enter charges per unit:");
+let lateCharge = 350;
+
+let netAmount = (units * chargePerUnit).toFixed(2);
+let grossAmount = (parseFloat(netAmount) + lateCharge).toFixed(2);
+
+document.write("<h1>K-Electric Bill</h1>");
+document.write("Customer Name: " + customerName + "<br>");
+document.write("Month: " + currentMonth1 + "<br>");
+document.write("Number of Units: " + units + "<br>");
+document.write("Charges per Unit: " + chargePerUnit + "<br><br>");
+document.write("Net Amount Payable (within Due Date): " + netAmount + "<br>");
+document.write("Late Payment Surcharge: " + lateCharge + "<br>");
+document.write("Gross Amount Payable (after Due Date): " + grossAmount);
+
+
+
+
+
+
+    </script>
+</body>
+</html>

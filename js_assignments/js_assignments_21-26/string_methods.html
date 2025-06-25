@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+
+// First + Last Name, then greet
+
+
+let firstName = prompt("Enter your first name:");
+let lastName = prompt("Enter your last name:");
+let fullName = firstName + " " + lastName;
+alert("Hello, " + fullName + "!");
+
+
+// Favorite Mobile Model + Length
+let phone = prompt("Enter your favorite mobile phone model:");
+document.write("Your favorite phone is: " + phone + "<br>");
+document.write("Length of input: " + phone.length);
+
+
+
+// Last index of “l” in “Hello World”
+let word = "Pakistani";
+let index = word.indexOf("n");
+document.write("Index of 'n': " + index);
+
+//  Character at 3rd index in “Pakistani”
+
+let word1 = "Pakistani";
+let charAtIndex = word1.charAt(3);
+document.write("Character at index 3: " + charAtIndex);
+
+
+// Repeat Q1 using concat()
+
+let firstName1 = prompt("Enter your first name:");
+let lastName1 = prompt("Enter your last name:");
+let fullName1 = firstName1.concat(" ", lastName1);
+alert("Hello, " + fullName1 + "!");
+
+// Replace “Hyder” with “Islam”
+
+let city = "Hyderabad";
+let newCity = city.replace("Hyder", "Islam");
+document.write("After replacement: " + newCity);
+
+// Replace all “and” with “&”
+
+let message = "Ali and Sami are best friends. They play cricket and football together.";
+let newMessage = message.replace(/and/g, "&");
+document.write("Updated message: " + newMessage);
+
+// Convert string “472” to number 472
+let str = "472";
+let num = Number(str);
+
+document.write("Value: " + str + "<br>");
+document.write("Type: " + typeof str + "<br><br>");
+
+document.write("Converted Value: " + num + "<br>");
+document.write("Converted Type: " + typeof num);
+
+// Convert user input to CAPITAL letters
+
+let userInput = prompt("Enter any text:");
+let capitalText = userInput.toUpperCase();
+document.write("Uppercase: " + capitalText);
+
+// User input to Title Case
+
+let userInput1 = prompt("Enter any text:");
+let titleCase = userInput1.charAt(0).toUpperCase() + userInput1.slice(1).toLowerCase();
+document.write("Title Case: " + titleCase);
+
+// Convert 35.36 to string and remove dot
+
+
+let num2 = 35.36;
+let numStr = num2.toString().replace(".", "");
+document.write("Result: " + numStr);
+
+// Username validation (no @, ., ,, !)
+let username = prompt("Enter your username:");
+let isValid = true;
+
+for (let i = 0; i < username.length; i++) {
+    let code = username.charCodeAt(i);
+    if (code === 33 || code === 44 || code === 46 || code === 64) {
+        isValid = false;
+        break;
+    }
+}
+
+if (!isValid) {
+    alert("Please enter a valid username without special characters (@ . , !)");
+} else {
+    alert("Username accepted: " + username);
+}
+
+// Search in bakery items (case insensitive)
+
+
+let A = ["cake", "apple pie", "cookie", "chips", "patties"];
+let search = prompt("Welcome to ABC Bakery. What do you want to order?").toLowerCase();
+
+let found = false;
+for (let i = 0; i < A.length; i++) {
+    if (A[i].toLowerCase() === search) {
+        found = true;
+        break;
+    }
+}
+
+if (found) {
+    alert(search + " is available at our bakery.");
+} else {
+    alert("We are sorry, " + search + " is not available in our bakery.");
+}
+
+// Password Validation
+
+let password = prompt("Enter your password:");
+
+let startsWithLetter = isNaN(parseInt(password.charAt(0)));
+let hasLetter = /[a-zA-Z]/.test(password);
+let hasNumber = /[0-9]/.test(password);
+let isLongEnough = password.length >= 6;
+
+if (!startsWithLetter || !hasLetter || !hasNumber || !isLongEnough) {
+    alert("Invalid password!\n\nPassword must:\n1. Contain letters and numbers\n2. Not start with a number\n3. Be at least 6 characters long");
+} else {
+    alert("Password is valid.");
+}
+
+// Split "University of Karachi" into array
+
+let university = "University of Karachi";
+let arr = university.split("");
+
+for (let i = 0; i < arr.length; i++) {
+    document.write(arr[i] + "<br>");
+}
+
+
+// Display last character of user input
+
+let input = prompt("Enter any text:");
+let lastChar = input.charAt(input.length - 1);
+document.write("Last character: " + lastChar);
+
+
+// Count occurrences of "the" (case insensitive)
+
+let text = "The quick brown fox jumps over the lazy dog";
+let lowerText = text.toLowerCase();
+let count = (lowerText.match(/\bthe\b/g) || []).length;
+
+document.write("Number of occurrences of 'the': " + count);
+
+    </script>
+</body>
+</html>

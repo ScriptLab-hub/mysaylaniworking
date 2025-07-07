@@ -1,0 +1,293 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1
+
+function ShowDateTime(){
+    let DateTimeNow = new Date();
+    let date = DateTimeNow.getDate();
+    let hours = DateTimeNow.getHours();
+    let minutes = DateTimeNow.getMinutes();
+    let ampm= "AM";
+    if(hours>=12){
+        ampm ="PM";
+        if(hours>12){
+            hours= hpurs-12;
+        
+        }
+        else if (hours==0){
+            hours=12
+        }
+
+    }
+}
+ShowDateTime();
+
+// 2
+function getName(){
+    let firstName = prompt("Enter First Name");
+    let lastName = prompt("Enter Last Name");
+    let greeting = "Hello Mr: " + firstName + " " + lastName;
+    console.log(greeting);
+    return greeting;
+}
+
+document.write(getName());
+
+// 3
+
+function getSum(){
+    let num1= Number(prompt("Enter First Number"));
+    let num2=Number(prompt("Enter Second Number"));
+    let sum= num1+num2;
+    console.log("Sum is: " +sum);
+    return sum;
+}
+document.write("Sum is: " + getSum());
+
+// 4
+function calculate() {
+    let num1 = Number(prompt("Enter First Number"));
+    let operator = prompt("Enter Operator (+, -, *, /, %)");
+    let num2 = Number(prompt("Enter Second Number"));
+    let result;
+    if (operator ==="+"){
+        result = num1 + num2;
+    }
+    else if (operator ==="-"){
+        result = num1 - num2;
+    }
+    else if (operator ==="*"){
+        result = num1 * num2;
+    }
+    else if(operator ==="/"){
+        result=num1 / num2
+    }
+    else if(operator ==="%"){
+        result = num1 % num2;
+    }
+    else {
+        result = "Invalid Operator";
+    }
+    return result;
+}
+    document.write("Result is: " + calculate());
+
+// 5
+
+let num = Number(prompt("Enter a number to find its square:"));
+function square(n) {
+    if (isNaN(n)) {
+        console.log("Please enter a valid number.");
+        return "Invalid input";
+    }
+    let result = n * n;
+    console.log("Square of " + n + " is: " + result);
+    return result;
+}
+document.write("Square of " + num + " is: " + square(num));
+
+6
+let number = Number(prompt("Enter a number to find its factorial: "));
+function factorial(n){
+    let result = 1;
+    for (let i=2; i<=n; i++){
+        result = result*i;
+    }
+
+    if (isNaN(n)|| n < 0){
+        console.log("Please enter a valid number: ");
+        return "Invalid input";
+        if (n ===0 || n===1){
+            return 1;
+        }
+    }
+    console.log("Factorial of " + n + " is: " + result);
+    return result;
+}
+factorial(number);
+
+// 7
+
+let start = Number(prompt("Enter the starting number: "));
+let end = Number(prompt("Enter the ending number: "));
+function countToTen(){
+    if (isNaN(start) || isNaN(end) || start >=end){
+        console.log("Please Enter Valid Numbers");
+        return "Invalid Input";}
+    let result = "";
+    for (let i = start; i <=end; i++){
+        result = result + i + " ";
+    }
+    console.log ("Counting from" + start+ " to " + end + " : " + result);
+    return result;
+    }
+document.write("Counting from " + start + " to " + end + ": " + countToTen());
+
+// 8
+
+let base = Number(prompt("Enter the base number: "));
+let perpendicular = Number(prompt("Enter the perpendicular number: "));
+function calculateHypotenuse(base, perpendicular){
+if (isNaN(base) || isNaN(perpendicular) || base <=0 || perpendicular <= 0){
+
+    console.log("Please enter valid numbers greater than zero.");
+    return "Invalid Input";
+}
+let hypotenuse = Math.sqrt(base * base + perpendicular * perpendicular);
+console.log("Hypotenuse is: " + hypotenuse);
+return hypotenuse;
+}
+document.write("Hypotenuse is: " + calculateHypotenuse(base, perpendicular));
+
+// 9 (i)
+function calculateArea(width,height){
+    if (isNaN(width) || isNaN(height) || width <= 0 || height <= 0){
+        console.log("Please enter valid numbers greater than zero.");
+        return "Invalid Input";
+    }
+    let area = width * height;
+    console.log("Area of the rectangle is: " + area);
+    return area;
+    
+}
+document.write("Area of the rectangle is: " + calculateArea(5, 10)); // Example usage
+9 (ii)
+let width = Number(prompt("Enter the width of the rectangle: "));
+let height = Number(prompt("Enter the height of the rectangle: "));
+function calculateArea(){
+    if (isNaN(width) || isNaN(height) ||width <=0 || height <=0){
+        console.log("Please enter valid numbers greater than zero.");
+        return "Invalid Input";
+    }
+    let area = width* height;
+    console.log("Area of the rectangle is: " + area);
+    return area;
+}
+document.write("Area of the rectangle is: " + calculateArea(width, height)); // Example usage
+
+// 10
+
+let palindromeString = prompt("Enter a string to check if it's a palindrome: ");
+function isPalindrome(str){
+    if (typeof str !== "string" || str.length === 0){
+        console.log("Please enter a valid string.");
+        return "Invalid Input";
+    }
+    let reversedStr = str.split("").reverse().join("");
+    if (reversedStr === str){
+        alert(str + " is a palindrome.");
+        console.log(str + " is a palindrome.");
+        return true;
+    } else {
+        alert(str + " is not a palindrome.");
+        console.log(str + " is not a palindrome.");
+        return false;
+    }
+}
+document.write("Is the string '" + palindromeString + "' a palindrome? " + isPalindrome(palindromeString));
+
+// 11
+
+let sentence1 = "yeh aik sentence hai.";
+function capitalizeFirstLetter(sentence){
+    if (typeof sentence !== "string" || sentence.length === 0){
+        console.log("Please enter a valid string.");
+        return "Invalid Input";
+    }
+    let words = sentence.split(" ");
+    let capitalizeWords = words.map(word => word.charAt(0).toUpperCase() + word.slice(1));
+    let result = capitalizeWords.join(" ");
+    console.log("Capitalized Sentence: " + result);
+    return result;
+}
+document.write("Capitalized Sentence: " + capitalizeFirstLetter(sentence1));
+
+// 12
+
+let sentence2 = prompt("Enter a Sentence: ");
+function findLongestWord(sentence){
+    if (typeof sentence !== "string" || sentence.length === 0){
+        console.log("Please enter a valid string.");
+        return "Invalid Input";
+    }
+    let words = sentence.split(" ");
+    if (words.length === 0) {
+        return "";
+    }
+    let longestWord = words.reduce((longest, current) => {
+        return current.length > longest.length ? current : longest;
+    }, words[0]);
+    console.log("Longest word is: " + longestWord);
+    return longestWord;
+}
+document.write("Longest word is: " + findLongestWord(sentence2));
+
+
+// 13
+
+
+let sentence3 = prompt ("Enter a sentence ");
+let letter = prompt("Enter a letter to count its occurrences: ");
+
+function countletters(sentence, letter){
+
+    let count = 0;
+    for (let i = 0; i < sentence.length; i++) {
+        if (sentence[i].toLowerCase() === letter.toLowerCase()) {
+            count++;
+        }
+    }
+    return count;
+}
+
+let result= countletters(sentence, letter);
+alert("The letter '" + letter + "' occurs " + result + " times in the sentence.");
+console.log("The letter '" + letter + "' occurs " + result + " times in the sentence.");
+document.write("The letter '" + letter + "' occurs " + result + " times in the sentence.");
+
+// 14
+
+let radidus = Number(prompt("Enter the radius of the circle:"));
+function calculateCircumference(radius) {
+    if (isNaN(radius) || radius <= 0) {
+        console.log("Please enter a valid radius greater than zero.");
+        return "Invalid Input";
+    }
+    let circumference = 2 * Math.PI * radius;
+    console.log("Circumference of the circle is: " + circumference);
+    return circumference;
+}
+document.write("Circumference of the circle is: " + calculateCircumference(radidus));
+
+//14(ii)
+
+function calculateArea(radius) {
+    if (isNaN(radius) || radius <= 0) {
+        console.log("Please enter a valid radius greater than zero.");
+        return "Invalid Input";
+    }
+    let area = Math.PI * radius * radius;
+    console.log("Area of the circle is: " + area);
+    return area;
+}
+document.write("Area of the circle is: " + calculateArea(radidus));
+
+
+
+
+    </script>
+</body>
+
+
+
+
+
